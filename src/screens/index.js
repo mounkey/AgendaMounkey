@@ -1,0 +1,1 @@
+export { default as inicio } from './welcome/Welcome'; 
