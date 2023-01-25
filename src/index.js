@@ -48,7 +48,7 @@ export default function index() {
       detail: detail,
       date: date(),
     };
-    console.warn(tasks)
+    console.warn(task)
     setTasks([...tasks, task]);
     setName("");
     setReason("");
@@ -58,10 +58,10 @@ export default function index() {
   //render Item
   const renderItem = ({ item }) => (
     <View style={styles.render}>
-      <Text style={styles.font}>Nombre: {item.name}</Text>
-      <Text style={styles.font}>Motivo: {item.reason}</Text>
-      <Text style={styles.font}>Detalle: {item.detail}</Text>
-      <Text style={styles.font}>Fecha: {item.date}</Text>
+      <Text style={styles.fontRender}>Nombre: {item.name}</Text>
+      <Text style={styles.fontRender}>Motivo: {item.reason}</Text>
+      <Text style={styles.fontRender}>Detalle: {item.detail}</Text>
+      <Text style={styles.fontRender}>Fecha: {item.date}</Text>
     </View>
 
   );
@@ -163,8 +163,16 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   render: {
+    marginHorizontal:20,
+    marginVertical:10,
+    padding: 10,
+    width: "90%",
     backgroundColor: Color.white,
-    color: Color.black,
     marginVertical: 5,
+    borderRadius: 10,
   },
+  fontRender: {
+    color: Color.primary,
+    fontSize: 25,
+  }
 });
