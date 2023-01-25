@@ -1,9 +1,9 @@
+import { FlatList, Image, SafeAreaView, StyleSheet, Text, TextInput, View } from "react-native";
 import React, { useState } from "react";
-import { FlatList, Image, StyleSheet, Text, TextInput, View } from "react-native";
-import { StatusBar } from "expo-status-bar";
+
 import { Boton } from "./components/index";
 import Color from "./constanst/color";
-
+import { StatusBar } from "expo-status-bar";
 
 export default function index() {
   // useState
@@ -14,7 +14,7 @@ export default function index() {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const [detail, setDetail] = useState("");
   // eslint-disable-next-line react-hooks/rules-of-hooks
-  const [list, setList] = useState([]);
+  const [tasks, setTasks] = useState([]);
 
   //functiom
   const date = () => {
@@ -40,37 +40,35 @@ export default function index() {
   };
 
   // Onpress
-  const onPress = () => {
-    if (name != "" && reason != "" && detail != "") {
-      setList([
-        ...list,
-        {
-          id: Math.random().toString(),
-          name,
-          reason,
-          detail,
-          date: date(),
-        },
-      ]);
-      console.log("aqui paso Willy");
-      setList("");
-      setName("");
-      setReason("");
-      setDetail("");
-    } else {
-      console.log("Error");
-    }
+  const onPressBottom = () => {
+    const task = {
+      id: Date.now(),
+      name: name,
+      reason: reason,
+      detail: detail,
+      date: date(),
+    };
+    console.warn(tasks)
+    setTasks([...tasks, task]);
+    setName("");
+    setReason("");
+    setDetail("");
+
   };
   //render Item
   const renderItem = ({ item }) => (
-    <View style= {styles.render}>
-      <Text>{item.name + "-" + item.date} </Text>
+    <View style={styles.render}>
+      <Text style={styles.font}>Nombre: {item.name}</Text>
+      <Text style={styles.font}>Motivo: {item.reason}</Text>
+      <Text style={styles.font}>Detalle: {item.detail}</Text>
+      <Text style={styles.font}>Fecha: {item.date}</Text>
     </View>
+
   );
 
-  const keyID = (item) => item.id;
+  const keyExtractor= (item) => item.id;
   return (
-    <View style ={styles.container}>
+    <SafeAreaView style ={styles.container}>
       <Image style={styles.imageLogo} source={require("../assets/Logo2.png")} />
       <StatusBar style="auto" />
       <View style={styles.containerInPut}>
@@ -84,34 +82,34 @@ export default function index() {
               style={styles.TextInput}
               placeholder="Nombre"
               value={name}
-              onChange={onChangeName}
+              onChangeText={onChangeName}
             />
             <TextInput
               style={styles.TextInput}
               placeholder="Motivo"
               value={reason}
-              onChange={onChangeReason}
+              onChangeText={onChangeReason}
             />
             <TextInput
               style={styles.TextInput}
               placeholder="Detalle"
               value={detail}
-              onChange={onchangeDetail}
+              onChangeText={onchangeDetail}
             />
             <Boton
               style={styles.btn}
               title="Guardar"
-              onPress={onPress}
+              onPress={onPressBottom}
               bkcolor={Color.primary}
               color={Color.white}
             />
           </View>
           <View style={styles.containerFlat}>
-            <FlatList data={list} renderItem={renderItem} keyExtractor={keyID} />
+            <FlatList data={tasks} renderItem={renderItem} keyExtractor={keyExtractor} />
           </View>
         </>
       </View>
-    </View>
+    </SafeAreaView>
   );
 }
 
