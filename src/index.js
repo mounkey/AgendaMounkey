@@ -1,178 +1,58 @@
-import { FlatList, Image, SafeAreaView, StyleSheet, Text, TextInput, View } from "react-native";
+import { ActivityIndicator, SafeAreaView, StatusBar, StyleSheet, Text, TextInput, View } from "react-native";
 import React, { useState } from "react";
 
-import { Boton } from "./components/index";
-import Color from "./constanst/color";
-import { StatusBar } from "expo-status-bar";
+import Actividades from "./screens/Activities";
+import Color from './constanst/color';
+import Inicio from "./screens/Welcome";
+import { useFonts } from 'expo-font';
 
 export default function index() {
-  // useState
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const [name, setName] = useState("");
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const [reason, setReason] = useState("");
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const [detail, setDetail] = useState("");
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const [tasks, setTasks] = useState([]);
 
-  //functiom
-  const date = () => {
-    const date = Date.now();
-    const hoy = new Date(date);
-    const day = hoy.toLocaleString();
-    return day;
-  };
+  //useState
+  const [selected, setSelected] = useState(false);
 
-  //onChangeName
-  const onChangeName = (text) => {
-    setName(text);
-  };
+  const [loaded] = useFonts({
+    'Montserrat-Regular': require('../assets/fonts/Montserrat-Regular.ttf'),
+    'Montserrat-Bold': require('../assets/fonts/Montserrat-Bold.ttf'),
+    'Montserrat-Italic': require('../assets/fonts/Montserrat-Italic.ttf'),
+    'Montserrat-Medium': require('../assets/fonts/Montserrat-Medium.ttf'),
+  });
 
-  //onChangeReason
-  const onChangeReason = (text) => {
-    setReason(text);
-  };
-
-  // onChangeDetail
-  const onchangeDetail = (text) => {
-    setDetail(text);
-  };
-
-  // Onpress
-  const onPressBottom = () => {
-    const task = {
-      id: Date.now(),
-      name: name,
-      reason: reason,
-      detail: detail,
-      date: date(),
-    };
-    console.warn(task)
-    setTasks([...tasks, task]);
-    setName("");
-    setReason("");
-    setDetail("");
-
-  };
-  //render Item
-  const renderItem = ({ item }) => (
-    <View style={styles.render}>
-      <Text style={styles.fontRender}>Nombre: {item.name}</Text>
-      <Text style={styles.fontRender}>Motivo: {item.reason}</Text>
-      <Text style={styles.fontRender}>Detalle: {item.detail}</Text>
-      <Text style={styles.fontRender}>Fecha: {item.date}</Text>
-    </View>
-
-  );
-
-  const keyExtractor= (item) => item.id;
-  return (
-    <SafeAreaView style ={styles.container}>
-      <Image style={styles.imageLogo} source={require("../assets/Logo2.png")} />
-      <StatusBar style="auto" />
-      <View style={styles.containerInPut}>
-        <>
-          <View style={styles.containerImage}>
-            <Image style={styles.imagen2} source={require("../assets/Activities.png")} />
-          </View>
-          <View style ={styles.containerTextInput}>
-            <Text style={styles.font}>Activities</Text>
-            <TextInput
-              style={styles.TextInput}
-              placeholder="Nombre"
-              value={name}
-              onChangeText={onChangeName}
-            />
-            <TextInput
-              style={styles.TextInput}
-              placeholder="Motivo"
-              value={reason}
-              onChangeText={onChangeReason}
-            />
-            <TextInput
-              style={styles.TextInput}
-              placeholder="Detalle"
-              value={detail}
-              onChangeText={onchangeDetail}
-            />
-            <Boton
-              style={styles.btn}
-              title="Guardar"
-              onPress={onPressBottom}
-              bkcolor={Color.primary}
-              color={Color.white}
-            />
-          </View>
-          <View style={styles.containerFlat}>
-            <FlatList data={tasks} renderItem={renderItem} keyExtractor={keyExtractor} />
-          </View>
-        </>
+  if(!loaded){
+    return(
+      <View style={styles.containerLoader}>
+        <ActivityIndicator size="large" color={Color.letter} />
       </View>
-    </SafeAreaView>
+    )
+  }
+
+  const onSelectedChangePage =(select) => {
+    setSelected(select)
+  };
+
+  if (!selected) {
+    content = <Inicio onSelectedChangePage={onSelectedChangePage}  />;
+  }
+  else {
+    content = <Actividades onSelectedChangePage={onSelectedChangePage}  />;
+  }
+
+  return(
+    <View style={styles.container}>
+      {content}
+      <StatusBar style="auto" />
+    </View>
   );
-}
+
+};
+
 
 const styles = StyleSheet.create({
   container: {
-    margin: 44,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  imageLogo: {
-    marginBottom: 12,
-    width: 101,
-    height: 143,
-  },
-  containerInPut: {
-    backgroundColor: Color.primary,
-    width: 404,
-    height: "85%",
-    borderRadius: 30,
-  },
-  containerImage: {
-    alignItems: "flex-start",
-  },
-  imagen2: {
-    marginTop: 15,
-    marginBottom: 30,
-    marginLeft: 19,
-  },
-  containerTextInput: {
-    alignItems: "center",
-  },
-  font: {
-    fontSize: 25,
-    color: Color.white,
-    marginHorizontal: 19,
-    marginVertical: 3,
-  },
-  TextInput: {
-    width: "90%",
-    height: 25,
-    backgroundColor: Color.white,
-    placeholderTextColor: Color.black,
-    fontSize: 20,
-    borderRadius: 10,
-    marginVertical: 3,
-    marginHorizontal: 20,
-    paddingLeft: 20,
-  },
-  containerFlat: {
     flex: 1,
-  },
-  render: {
-    marginHorizontal:20,
-    marginVertical:10,
-    padding: 10,
-    width: "90%",
     backgroundColor: Color.white,
-    marginVertical: 5,
-    borderRadius: 10,
+    fontFamily: 'Montserrat-Regular',
   },
-  fontRender: {
-    color: Color.primary,
-    fontSize: 25,
-  }
+
 });
+
