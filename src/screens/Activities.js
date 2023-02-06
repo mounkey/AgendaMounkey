@@ -1,7 +1,7 @@
+import { Boton, TextBox } from "../components/index";
 import { FlatList, Image, SafeAreaView, StyleSheet, Text, TextInput, View } from "react-native";
 import React, { useState } from "react";
 
-import { Boton } from "../components/index";
 import Color from "../constanst/color";
 import { StatusBar } from "expo-status-bar";
 
@@ -44,7 +44,6 @@ export default function Activities({ onSelectedChangePage }) {
       detail: detail,
       date: date(),
     };
-    console.warn(task)
     setTasks([...tasks, task]);
     setName("");
     setReason("");
@@ -80,23 +79,29 @@ export default function Activities({ onSelectedChangePage }) {
           </View>
           <View style={styles.containerTextInput}>
             <Text style={styles.font}>Activities</Text>
-            <TextInput
-              style={styles.TextInput}
+            <TextBox
               placeholder="Nombre"
               value={name}
               onChangeText={onChangeName}
+              alt={25}
+              multiline= {false}
+              numLine={1}
             />
-            <TextInput
-              style={styles.TextInput}
+            <TextBox
               placeholder="Motivo"
               value={reason}
               onChangeText={onChangeReason}
+              alt={25}
+              multiline={false}
+              numLine={1}
             />
-            <TextInput
-              style={styles.TextInput}
+            <TextBox
               placeholder="Detalle"
               value={detail}
               onChangeText={onchangeDetail}
+              alt={150}
+              multiline={true}
+              numLine={10}
             />
             <Boton
               style={styles.btn}
@@ -185,6 +190,6 @@ const styles = StyleSheet.create({
   fontRender: {
     fontFamily: 'Montserrat-Regular',
     color: Color.primary,
-    fontSize: 25,
+    fontSize: 20,
   }
 });
