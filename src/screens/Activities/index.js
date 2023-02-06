@@ -1,11 +1,11 @@
-import { Boton, TextBox } from "../components/index";
-import { FlatList, Image, SafeAreaView, StyleSheet, Text, TextInput, View } from "react-native";
+import { Alert, FlatList, Image, SafeAreaView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Boton, TextBox } from "../../components/index";
 import React, { useState } from "react";
 
-import Color from "../constanst/color";
+import Color from "../../constanst/color";
 import { StatusBar } from "expo-status-bar";
 
-export default function Activities({ onSelectedChangePage }) {
+export default function Activities() {
   // useState
   const [name, setName] = useState("");
   const [reason, setReason] = useState("");
@@ -37,18 +37,22 @@ export default function Activities({ onSelectedChangePage }) {
 
   // Onpress
   const onPressBottom = () => {
-    const task = {
-      id: Date.now(),
-      name: name,
-      reason: reason,
-      detail: detail,
-      date: date(),
-    };
-    setTasks([...tasks, task]);
-    setName("");
-    setReason("");
-    setDetail("");
-
+    if (name === "" || reason === "" || detail === "") {
+      Alert.alert("Error", "Todos los campos son obligatorios")
+    }
+    else {
+      const task = {
+        id: Date.now(),
+        name: name,
+        reason: reason,
+        detail: detail,
+        date: date(),
+      };
+      setTasks([...tasks, task]);
+      setName("");
+      setReason("");
+      setDetail("");
+    }
   };
   //onPressReturn
   const onPressReturn = () =>{
@@ -63,19 +67,27 @@ export default function Activities({ onSelectedChangePage }) {
       <Text style={styles.fontRender}>Motivo: {item.reason}</Text>
       <Text style={styles.fontRender}>Detalle: {item.detail}</Text>
       <Text style={styles.fontRender}>Fecha: {item.date}</Text>
+      <TouchableOpacity onPress={() => onPressDetails(item)}>
+        <Text style={styles.fontRender}>Detalles</Text>
+      </TouchableOpacity>
+
     </View>
 
   );
 
+  const onPressDetails = ({id}) => {
+    Alert.alert("Detalles", "id: " + id);
+  };
+
   const keyExtractor = (item) => item.id;
   return (
     <SafeAreaView style={styles.container}>
-      <Image style={styles.imageLogo} source={require("../../assets/Logo2.png")} />
+      <Image style={styles.imageLogo} source={require("../../../assets/Logo2.png")} />
       <StatusBar style="auto" />
       <View style={styles.containerInPut}>
         <>
           <View style={styles.containerImage}>
-            <Image style={styles.imagen2} source={require("../../assets/Activities.png")} />
+            <Image style={styles.imagen2} source={require("../../../assets/Activities.png")} />
           </View>
           <View style={styles.containerTextInput}>
             <Text style={styles.font}>Activities</Text>

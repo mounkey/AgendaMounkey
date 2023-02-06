@@ -1,11 +1,11 @@
 import { Image, SafeAreaView, StyleSheet, Text, TextInput, View } from "react-native";
 import React, { useState } from "react";
 
-import { Boton } from "../components/index";
-import Color from "../constanst/color";
+import { Boton } from "../../components/index";
+import Color from "../../constanst/color";
 import { StatusBar } from "expo-status-bar";
 
-export default function Welcome( { onSelectedChangePage } ) {
+export default function Welcome( ) {
   // useState
   /* eslint-disable react-hooks/rules-of-hooks */
   const [mail, setMail] = useState("");
@@ -29,7 +29,7 @@ export default function Welcome( { onSelectedChangePage } ) {
   }
   return (
     <SafeAreaView style={styles.container}>
-      <Image style={styles.logo} source={require("../../assets/logos.png")} />
+      <Image style={styles.logo} source={require("../../../assets/logos.png")} />
       <View style={styles.containerInPut}>
         <Text style={styles.text}>Login</Text>
         <TextInput
@@ -49,7 +49,7 @@ export default function Welcome( { onSelectedChangePage } ) {
       <View style={styles.containerInPut2}>
         <Boton title="Tareas" bkcolor={Color.primary} color={Color.white} onPress={onPresstaks} />
       </View>
-      <Image style={styles.foot} source={require("../../assets/pielogo.png")} />
+      <Image style={styles.foot} source={require("../../../assets/pielogo.png")} />
       <StatusBar style="auto" />
     </SafeAreaView>
   );

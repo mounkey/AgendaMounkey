@@ -2,6 +2,7 @@ import { ActivityIndicator, SafeAreaView, StatusBar, StyleSheet, Text, TextInput
 import React, { useState } from "react";
 
 import Actividades from "./screens/Activities";
+import AppNavigator from "./navigation/"
 import Color from './constanst/color';
 import Inicio from "./screens/Welcome";
 import { useFonts } from 'expo-font';
@@ -39,7 +40,7 @@ export default function index() {
 
   return(
     <View style={styles.container}>
-      {content}
+     <AppNavigator/>
       <StatusBar style="auto" />
     </View>
   );
