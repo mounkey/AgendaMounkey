@@ -1,6 +1,7 @@
-import { Actividades, Detalles, Inicio } from '../screens';
+import { Actividades, Detalles, Inicio } from '../screens/index';
 
 import Color from '../constanst/color';
+import React from 'react';
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import react from 'react';
 
