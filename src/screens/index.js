@@ -1,3 +1,3 @@
-import { Default as Actividades } from './Activities';
-import { Default as Detalles } from './DetailsActivities';
-import { Default as Inicio } from './Welcome';
+export { default as Actividades } from './Activities/index';
+export { default as Detalles } from './DetailsActivities/index';
+export { default as Inicio } from './Welcome/index';
