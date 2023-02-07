@@ -24,3 +24,40 @@ export default function DetailsActivities({ route, navigation }) {
     </SafeAreaView>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: Color.white,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+
+  containerInPut: {
+    flex: 1,
+    backgroundColor: Color.white,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+
+  containerInPut2: {
+    flex: 1,
+    backgroundColor: Color.white,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+
+  text: {
+    fontSize: 20,
+    color: Color.primary,
+    fontWeight: "bold",
+    margin: 10,
+  },
+
+  foot: {
+    width: 200,
+    height: 200,
+    position: "absolute",
+    bottom: 0,
+  },
+});

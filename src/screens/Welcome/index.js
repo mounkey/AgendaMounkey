@@ -5,7 +5,7 @@ import { Boton } from "../../components/index";
 import Color from "../../constanst/color";
 import { StatusBar } from "expo-status-bar";
 
-export default function Welcome( ) {
+export default function Welcome({ navigation }) {
   // useState
   /* eslint-disable react-hooks/rules-of-hooks */
   const [mail, setMail] = useState("");
@@ -24,8 +24,7 @@ export default function Welcome( ) {
   };
   // on PressTasks
   const onPresstaks = () =>{
-    setSelected(!selected);
-    onSelectedChangePage(selected);
+    navigation.navigate('Actividades');
   }
   return (
     <SafeAreaView style={styles.container}>

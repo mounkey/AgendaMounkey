@@ -10,8 +10,8 @@ const StackNavigator = () => {
   return(
     <Stack.Navigator initialRouteName = 'Inicio'>
       <Stack.Screen name='Inicio'  component={Inicio} options={{ title:'Bienvenido'}}/>
-      <Stack.Screen name='Activades' component={Actividades} options={{ title: 'Actividades' }} />
-      <Stack.Screen name='Detalle' component={Detalles} options={{ title: 'Detalle - Act.' }} />
+      <Stack.Screen name='Actividades' component={Actividades} options={{ title: 'Actividades' }} />
+      <Stack.Screen name='Detalles' component={Detalles} options={{ title: 'Detalle - Act.' }} />
     </Stack.Navigator>
   )
 }

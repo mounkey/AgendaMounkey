@@ -5,7 +5,7 @@ import React, { useState } from "react";
 import Color from "../../constanst/color";
 import { StatusBar } from "expo-status-bar";
 
-export default function Activities() {
+export default function Activities({ navigation }) {
   // useState
   const [name, setName] = useState("");
   const [reason, setReason] = useState("");
@@ -75,8 +75,14 @@ export default function Activities() {
 
   );
 
-  const onPressDetails = ({id}) => {
-    Alert.alert("Detalles", "id: " + id);
+  const onPressDetails = ({id, name, reason, detail, date}) => {
+    navigation.navigate('Detalles', {
+      name: name,
+      reason: reason,
+      detail: detail,
+      date: date,
+    });
+
   };
 
   const keyExtractor = (item) => item.id;
