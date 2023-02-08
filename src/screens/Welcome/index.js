@@ -24,7 +24,7 @@ export default function Welcome({ navigation }) {
   };
   // on PressTasks
   const onPresstaks = () =>{
-    navigation.navigate('Actividades');
+    navigation.navigate('Mostrar');
   }
   return (
     <SafeAreaView style={styles.container}>

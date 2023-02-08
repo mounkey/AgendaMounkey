@@ -1,4 +1,4 @@
-import { Alert, Image, SafeAreaView, StyleSheet, Text, TextInput, View } from "react-native";
+import { Image, SafeAreaView, StyleSheet, Text, View } from "react-native";
 
 import { Boton } from "../../components/index";
 import Color from "../../constanst/color";
