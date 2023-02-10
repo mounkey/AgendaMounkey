@@ -16,10 +16,6 @@ export default function DetailsActivities({ route, navigation }) {
         <Text style={styles.text}>Detalle: {detail}</Text>
         <Text style={styles.text}>Fecha: {date}</Text>
       </View>
-      <View style={styles.containerInPut2}>
-        <Boton title="Regresar" bkcolor={Color.primary} color={Color.white} onPress={() => navigation.goBack()} />
-      </View>
-      <Image style={styles.foot} source={require("../../../assets/pielogo.png")} />
       <StatusBar style="auto" />
     </SafeAreaView>
   );
@@ -52,12 +48,5 @@ const styles = StyleSheet.create({
     color: Color.primary,
     fontWeight: "bold",
     margin: 10,
-  },
-
-  foot: {
-    width: 200,
-    height: 200,
-    position: "absolute",
-    bottom: 0,
   },
 });

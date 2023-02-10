@@ -55,10 +55,10 @@ export default function Activities({ navigation }) {
     }
   };
   //onPressReturn
-  const onPressReturn = () =>{
+  /*const onPressReturn = () =>{
     setSelected(!selected);
     onSelectedChangePage(selected);
-  }
+  }*/
 
   //render Item
   const renderItem = ({ item }) => (
@@ -128,13 +128,7 @@ export default function Activities({ navigation }) {
               bkcolor={Color.primary}
               color={Color.white}
             />
-            <Boton
-              style={styles.btn}
-              title="Regreso"
-              onPress={onPressReturn}
-              bkcolor={Color.primary}
-              color={Color.white}
-            />
+
           </View>
           <View style={styles.containerFlat}>
             <FlatList data={tasks} renderItem={renderItem} keyExtractor={keyExtractor} />

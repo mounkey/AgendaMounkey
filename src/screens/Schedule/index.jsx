@@ -1,11 +1,20 @@
 import { StyleSheet, Text, View } from "react-native";
 
+import { Boton } from "../../components/index";
+import Color from "../../constanst/color";
 import React from "react";
 
-const Schedule = () => {
+const Schedule = ({ navigation }) => {
+
+  //onPressDetalle
+  const onPressDetalle = () =>{
+    navigation.navigate('Detalle');
+  }
+
   return (
     <View style = {style.container}>
       <Text>Schedule</Text>
+      <Boton title="Detalle" bkcolor={Color.primary} color={Color.white} onPress={onPressDetalle} />
     </View>
   );
 }

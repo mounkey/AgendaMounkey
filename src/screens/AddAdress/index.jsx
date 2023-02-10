@@ -2,7 +2,7 @@ import { StyleSheet, Text, View } from "react-native";
 
 import React from "react";
 
-const AddAdress = () => {
+const AddAdress = ( {navigation}) => {
   return (
     <View style={style.container}>
       <Text>AddAdress</Text>

@@ -1,13 +1,12 @@
-import { NavigationContainer } from '@react-navigation/native'
-import React from 'react'
-import StackNavigation from './stack'
+import { NavigationContainer } from '@react-navigation/native';
+import TabsNavigator from './tabs';
 
 const AppNavigator = () => {
   return (
     <NavigationContainer>
-      <StackNavigation />
+      <TabsNavigator />
     </NavigationContainer>
-  )
-}
+  );
+};
 
-export default AppNavigator
+export default AppNavigator;
