@@ -14,7 +14,7 @@ const personsResducer = ( state = initialState, action) => {
       const indexPerson = state.persons.findindex(
        (persons) => persons.id  === action.payload
       );
-      if (indexPersons === -1) return state;
+      if (indexPerson === -1) return state;
 
       return{
         ...state,
@@ -25,3 +25,5 @@ const personsResducer = ( state = initialState, action) => {
       return state;
   }
 };
+
+export default personsResducer;
