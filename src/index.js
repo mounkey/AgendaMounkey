@@ -5,6 +5,8 @@ import Actividades from "./screens/Activities";
 import AppNavigator from "./navigation/"
 import Color from './constanst/color';
 import Inicio from "./screens/Welcome";
+import { Provider } from 'react-native';
+import store from "./store";
 import { useFonts } from 'expo-font';
 
 export default function index() {
@@ -40,7 +42,9 @@ export default function index() {
 
   return(
     <View style={styles.container}>
-     <AppNavigator/>
+      <Provider store={store}>
+        <AppNavigator/>
+      </Provider>
       <StatusBar style="auto" />
     </View>
   );

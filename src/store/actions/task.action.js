@@ -1,5 +1,5 @@
-import { tasktypes } from "../types//index";
-const {GET_TASKS} = tasktypes;
+import { taskTypes } from "../types/index";
+const {GET_TASKS} = taskTypes;
 
 export const getTasks = (id) => ({
   type: GET_TASKS,
