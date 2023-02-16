@@ -1,12 +1,11 @@
 import { ActivityIndicator, SafeAreaView, StatusBar, StyleSheet, Text, TextInput, View } from "react-native";
 import React, { useState } from "react";
 
-import Actividades from "./screens/Activities";
 import AppNavigator from "./navigation/"
 import Color from './constanst/color';
 import Inicio from "./screens/Welcome";
 import { Provider } from 'react-native';
-import store from "./store";
+import store from "./store/index";
 import { useFonts } from 'expo-font';
 
 export default function index() {
