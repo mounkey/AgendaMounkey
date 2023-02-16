@@ -1,7 +1,7 @@
-import { TASKS } from  '../../constanst/data/index';
-import { taskstypes } from '../types/index';
+import { TASKS } from "../../constanst/data/index";
+import { tasktypes } from '../types/index'
 
-const { GET_TASKS } = taskstypes;
+const { GET_TASKS } = tasktypes;
 
 const  initialState ={
   tasks: TASKS,
