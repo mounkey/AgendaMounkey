@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import AppNavigator from "./navigation/"
 import Color from './constanst/color';
 import Inicio from "./screens/Welcome";
-import { Provider } from 'react-native';
+import { Provider } from 'react-redux';
 import store from "./store/index";
 import { useFonts } from 'expo-font';
 

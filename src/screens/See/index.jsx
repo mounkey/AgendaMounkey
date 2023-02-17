@@ -1,5 +1,5 @@
 import { FlatList, StyleSheet, Text, View } from "react-native";
-import { useDispatch, userSelect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import Color from "../../constanst/color";
 import {HLogo} from '../../components/index';
@@ -8,14 +8,19 @@ import { getTasks } from '../../store/actions';
 
 const See = ({ navigation }) => {
   const dispatch = useDispatch();
-  const tasks = userSelect(state => state.tasks);
+  const tasks = useSelector((state) => state.task.tasks);
 
+  //keyExtractor
+  const keyExtractor = (item, index) => index.toString();
+
+  //renderItem
   const renderItem = ({ item }) => (
     <View style={styles.render}>
       <Text style={styles.fontRender}>Nombre: {item.name}</Text>
       <Text style={styles.fontRender}>Motivo: {item.reason}</Text>
       <Text style={styles.fontRender}>Detalle: {item.detail}</Text>
       <Text style={styles.fontRender}>Fecha: {item.date}</Text>
+      <Text style={styles.fontRender}>Hora: {item.status}</Text>
       <TouchableOpacity onPress={() => onPressDetails(item)}>
         <Text style={styles.fontRender}>Detalles</Text>
       </TouchableOpacity>

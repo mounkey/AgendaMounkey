@@ -1,10 +1,10 @@
-import { TASKS } from "../../constanst/data/index";
-import { tasktypes } from '../types/index'
-
-const { GET_TASKS } = tasktypes;
+import { Tasks } from '../../constanst/Data/index';
+import { taskTypes } from '../types/index'
+console.log (Tasks);
+const { GET_TASKS } = taskTypes;
 
 const  initialState ={
-  tasks: TASKS,
+  tasks: Tasks,
   selected: null,
 };
 

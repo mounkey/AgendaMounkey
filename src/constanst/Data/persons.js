@@ -16,4 +16,6 @@ export const persons =[
     longitude: '725646.9W',
     image: 'https://scontent.fpmc1-1.fna.fbcdn.net/v/t31.18172-8/15775058_10210692317362081_124673145645881365_o.jpg?_nc_cat=110&ccb=1-7&_nc_sid=09cbfe&_nc_eui2=AeHl6Z6vgFnvI_SQa48SpMCoWOYdYaYUIVpY5h1hphQhWjCrc89lUE1YecvSy2mHojQ&_nc_ohc=RuKeZqocs-0AX-I_s0_&_nc_ht=scontent.fpmc1-1.fna&oh=00_AfDEtfGYkZcRDModfllFuQIYn4YcoEKXVq2ywG6UT8Wg4g&oe=640F52DF'
   }
-]
+];
+
+

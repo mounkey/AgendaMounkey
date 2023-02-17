@@ -1,4 +1,4 @@
-import { PERSONS } from '../../constanst/data/index';
+import { PERSONS } from '../../constanst/Data/index';
 import {personstypes} from '../types/index';
 
 const {GET_PERSONS} = personstypes;
