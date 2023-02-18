@@ -8,8 +8,8 @@ export const styles= StyleSheet.create({
     justifyContent: 'flex-start',
   },
   logo: {
-    width: 150 ,
-    height: 220,
-    marginBottom: 10,
+    width: 80 ,
+    height: 160,
+    resizeMode: 'contain',
   },
 });

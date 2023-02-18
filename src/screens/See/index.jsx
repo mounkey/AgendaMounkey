@@ -1,8 +1,8 @@
 import { FlatList, StyleSheet, Text, View } from "react-native";
+import {HLogo, PostHeader} from '../../components/index';
 import { useDispatch, useSelector } from 'react-redux';
 
 import Color from "../../constanst/color";
-import {HLogo} from '../../components/index';
 import React from 'react';
 import { getTasks } from '../../store/actions';
 
@@ -38,6 +38,7 @@ const See = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <HLogo/>
+      <PostHeader section="Per"/>
       <Text>See</Text>
       <View style={styles.containerFlat}>
         <FlatList data={tasks} renderItem={renderItem} keyExtractor={keyExtractor} />
