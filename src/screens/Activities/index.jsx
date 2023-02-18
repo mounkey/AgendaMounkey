@@ -1,5 +1,5 @@
-import { Alert, FlatList, Image, SafeAreaView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import { Boton, TextBox } from "../../components/index";
+import { Alert, Button, FlatList, Image, SafeAreaView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Boton, HLogo, PostHeader, TextBox } from "../../components/index";
 import React, { useState } from "react";
 
 import Color from "../../constanst/color";
@@ -75,7 +75,7 @@ export default function Activities({ navigation }) {
 
   );
 
-  const onPressDetails = ({id, name, reason, detail, date}) => {
+  const onPressDetails = ({ name, reason, detail, date}) => {
     navigation.navigate('Detalles', {
       name: name,
       reason: reason,
@@ -88,69 +88,27 @@ export default function Activities({ navigation }) {
   const keyExtractor = (item) => item.id;
   return (
     <SafeAreaView style={styles.container}>
-      <Image style={styles.imageLogo} source={require("../../../assets/Logo2.png")} />
-      <StatusBar style="auto" />
-      <View style={styles.containerInPut}>
-        <>
-          <View style={styles.containerImage}>
-            <Image style={styles.imagen2} source={require("../../../assets/Activities.png")} />
-          </View>
-          <View style={styles.containerTextInput}>
-            <Text style={styles.font}>Activities</Text>
-            <TextBox
-              placeholder="Nombre"
-              value={name}
-              onChangeText={onChangeName}
-              alt={25}
-              multiline= {false}
-              numLine={1}
-            />
-            <TextBox
-              placeholder="Motivo"
-              value={reason}
-              onChangeText={onChangeReason}
-              alt={25}
-              multiline={false}
-              numLine={1}
-            />
-            <TextBox
-              placeholder="Detalle"
-              value={detail}
-              onChangeText={onchangeDetail}
-              alt={150}
-              multiline={true}
-              numLine={10}
-            />
-            <Boton
-              style={styles.btn}
-              title="Guardar"
-              onPress={onPressBottom}
-              bkcolor={Color.primary}
-              color={Color.white}
-            />
+      <HLogo/>
+      <PostHeader section="Act" />
+      <Boton
+        onPress={() => navigation.navigate('Detalles')}
+        title="Detalles"
+        bkcolor={Color.primary}
+        color={Color.white}
+      />
 
-          </View>
-          <View style={styles.containerFlat}>
-            <FlatList data={tasks} renderItem={renderItem} keyExtractor={keyExtractor} />
-          </View>
-        </>
-      </View>
+      <StatusBar style="auto" />
     </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    margin: 44,
-    backgroundColor: "#fff",
+    backgroundColor: Color.white,
     alignItems: "center",
     justifyContent: "center",
   },
-  imageLogo: {
-    marginBottom: 12,
-    width: 101,
-    height: 143,
-  },
+
   containerInPut: {
     backgroundColor: Color.primary,
     width: 404,

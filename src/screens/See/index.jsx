@@ -1,5 +1,5 @@
 import { FlatList, StyleSheet, Text, View } from "react-native";
-import {HLogo, PostHeader} from '../../components/index';
+import {HLogo, PostHeaderPlus} from '../../components/index';
 import { useDispatch, useSelector } from 'react-redux';
 
 import Color from "../../constanst/color";
@@ -24,21 +24,24 @@ const See = ({ navigation }) => {
       <TouchableOpacity onPress={() => onPressDetails(item)}>
         <Text style={styles.fontRender}>Detalles</Text>
       </TouchableOpacity>
-
     </View>
-
   );
 
   //onPressDetails
   const onPressDetails = (item) => {
-    dispatch(getTasks(item.id));
+    dispatch(getTasks(item));
     navigation.navigate('Detalle');
+  };
+
+  //onPressNew
+  const onPressNew = () => {
+    navigation.navigate('Actividades');
   };
 
   return (
     <View style={styles.container}>
       <HLogo/>
-      <PostHeader section="Per"/>
+      <PostHeaderPlus section="Act" onPress={onPressNew}/>
       <Text>See</Text>
       <View style={styles.containerFlat}>
         <FlatList data={tasks} renderItem={renderItem} keyExtractor={keyExtractor} />

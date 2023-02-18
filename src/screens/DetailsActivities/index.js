@@ -1,21 +1,17 @@
+import { Boton, HLogo, PostHeader } from "../../components/index";
 import { Image, SafeAreaView, StyleSheet, Text, View } from "react-native";
 
-import { Boton } from "../../components/index";
 import Color from "../../constanst/color";
 import React from "react";
 import { StatusBar } from "expo-status-bar";
 
 export default function DetailsActivities({ route, navigation }) {
-  const { name, reason, detail, date } = route.params;
+
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.containerInPut}>
-        <Text style={styles.text}>Detalles</Text>
-        <Text style={styles.text}>Nombre: {name}</Text>
-        <Text style={styles.text}>Razon: {reason}</Text>
-        <Text style={styles.text}>Detalle: {detail}</Text>
-        <Text style={styles.text}>Fecha: {date}</Text>
-      </View>
+      <HLogo />
+      <PostHeader section="Act" />
+
       <StatusBar style="auto" />
     </SafeAreaView>
   );
@@ -23,7 +19,6 @@ export default function DetailsActivities({ route, navigation }) {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     backgroundColor: Color.white,
     alignItems: "center",
     justifyContent: "center",

@@ -1,6 +1,6 @@
+import { Boton, HLogo, PostHeaderPlus } from "../../components/index";
 import { StyleSheet, Text, View } from "react-native";
 
-import { Boton } from "../../components/index";
 import Color from "../../constanst/color";
 import React from "react";
 
@@ -11,9 +11,15 @@ const Schedule = ({ navigation }) => {
     navigation.navigate('Detalle');
   }
 
+  //onPressNew
+  const onPressNew = () =>{
+    navigation.navigate('APersona');
+  }
+
   return (
     <View style = {style.container}>
-      <Text>Schedule</Text>
+      <HLogo />
+      <PostHeaderPlus section="Sch" onPress={onPressNew} />
       <Boton title="Detalle" bkcolor={Color.primary} color={Color.white} onPress={onPressDetalle} />
     </View>
   );
@@ -23,9 +29,9 @@ export default Schedule;
 
 const style = StyleSheet.create({
   container: {
-    flex: 1,
     justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
+    backgroundColor: Color.white,
   }
 });
 

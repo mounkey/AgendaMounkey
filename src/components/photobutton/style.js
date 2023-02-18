@@ -1,23 +1,26 @@
+import Color from '../../constanst/color';
 import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
   container: {
-    backgroundColor: "white",
-    alignItems: "center",
     justifyContent: "center",
-    height: 45,
-    width: "80%",
-    flexDirection: "row",
+    alignItems: "center",
+    backgroundColor: Color.White,
+
   },
-  photo: {
-    height: 45,
-    width: 45,
-    borderRadius: 45 / 2,
-    marginLeft: 10,
+  photo:{
+    marginTop:15,
+    width: 140,
+    height: 140,
+    borderRadius: 200,
+    borderWidth: 1,
+    borderColor: Color.primary,
   },
-  camera: {
-    height: 20,
-    width: 20,
-    marginLeft: 10,
+  camera:{
+    marginTop:-45,
+    marginLeft: 120,
+    marginBottom: 15,
+
+
   }
 });
