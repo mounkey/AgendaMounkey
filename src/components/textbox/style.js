@@ -13,7 +13,7 @@ export const styles = StyleSheet.create({
     placeholderTextColor: Color.black,
     fontSize: 20,
     borderRadius: 10,
-    marginVertical: 3,
+    marginVertical:8,
     marginHorizontal: 20,
     paddingLeft: 20,
   },

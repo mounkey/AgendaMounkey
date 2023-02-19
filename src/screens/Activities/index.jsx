@@ -90,12 +90,56 @@ export default function Activities({ navigation }) {
     <SafeAreaView style={styles.container}>
       <HLogo/>
       <PostHeader section="Act" />
-      <Boton
-        onPress={() => navigation.navigate('Detalles')}
-        title="Detalles"
-        bkcolor={Color.primary}
-        color={Color.white}
-      />
+      <View style={styles.containerTextInput}>
+        <Text style={styles.font}>Actividades</Text>
+        <TextBox
+          placeholder="Nombre"
+          value={name}
+          onChangeText={onChangeName}
+          alt={25}
+          multiline={false}
+          numLine={1}
+        />
+        <TextBox
+          placeholder="Motivo"
+          value={reason}
+          onChangeText={onChangeReason}
+          alt={25}
+          multiline={false}
+          numLine={1}
+        />
+        <TextBox
+          value= {date()}
+          onChangeText = {date}
+          alt={25}
+          multiline={false}
+          numLine={1}
+          editable ={false}
+        />
+        <TextBox
+          placeholder="Detalle"
+          value={detail}
+          onChangeText={onchangeDetail}
+          alt={230}
+          multiline={true}
+          numLine={10}
+        />
+        <Boton
+          style={styles.btn}
+          title="Guardar"
+          onPress={onPressBottom}
+          bkcolor={Color.primary}
+          color={Color.white}
+        />
+        <Boton
+          onPress={() => navigation.navigate('Detalles')}
+          title="Detalles"
+          bkcolor={Color.primary}
+          color={Color.white}
+        />
+
+      </View>
+
 
       <StatusBar style="auto" />
     </SafeAreaView>
@@ -107,14 +151,10 @@ const styles = StyleSheet.create({
     backgroundColor: Color.white,
     alignItems: "center",
     justifyContent: "center",
+    height: '100%',
   },
 
-  containerInPut: {
-    backgroundColor: Color.primary,
-    width: 404,
-    height: "85%",
-    borderRadius: 30,
-  },
+
   containerImage: {
     alignItems: "flex-start",
   },
@@ -125,13 +165,19 @@ const styles = StyleSheet.create({
   },
   containerTextInput: {
     alignItems: "center",
+    backgroundColor: Color.primary,
+    width: 404,
+    height: "70%",
+    borderRadius: 30,
   },
   font: {
     fontFamily: 'Montserrat-Regular',
-    fontSize: 25,
+    fontSize: 18,
     color: Color.white,
-    marginHorizontal: 19,
-    marginVertical: 3,
+    marginHorizontal: 25,
+    marginVertical: 10,
+    alignSelf: 'baseline',
+    marginLeft:30,
   },
   TextInput: {
     fontFamily: 'Montserrat-Regular',
