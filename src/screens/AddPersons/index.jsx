@@ -1,10 +1,60 @@
-import { Boton, PhotoButton, PostHeader } from "../../components/index";
+import { Boton, PhotoButton, PostHeader, TextBox } from "../../components/index";
+import React, { useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
 
 import Color from "../../constanst/color";
-import React from "react";
 
 const AddPersons = ( {navigation} ) => {
+
+  //useState
+  const [name, setName] = useState("");
+  const [mailp, setMailp] = useState("");
+  const [mails, setMails] = useState("");
+  const [phone, setPhone] = useState("");
+  const [phones, setPhones] = useState("");
+  const [face, setFace] = useState("");
+  const [insta, setInsta] = useState("");
+  const [link, setLink] = useState("");
+
+  //onChangeName
+  const onChangeName = (text) => {
+    setName(text);
+  };
+
+  //onChangeMailp
+  const onChangeMailp = (text) => {
+    setMailp(text);
+  };
+
+  //onChangeMails
+  const onChangeMails = (text) => {
+    setMails(text);
+  };
+
+  //onChangePhone
+  const onChangePhone = (text) => {
+    setPhone(text);
+  };
+
+  //onChangePhones
+  const onChangePhones = (text) => {
+    setPhones(text);
+  };
+
+  //onChangeFace
+  const onChangeFace = (text) => {
+    setFace(text);
+  };
+
+  //onChangeInsta
+  const onChangeInsta = (text) => {
+    setInsta(text);
+  };
+
+  //onChangeLink
+  const onChangeLink = (text) => {
+    setLink(text);
+  };
 
   //onPressAddAdress
   const onPressAddAdress = () => {
@@ -25,10 +75,77 @@ const AddPersons = ( {navigation} ) => {
   return (
     <View style={style.container}>
       <PhotoButton onPress={onPressCamera} img={PhotoHead}></PhotoButton>
-      <Text>AddAdress</Text>
       <PostHeader section="Per" />
-      <Boton title="Direccion" bkcolor={Color.primary} color={Color.white} onPress={onPressAddAdress} />
-      <Boton title="Fotos" bkcolor={Color.primary} color={Color.white} onPress={onPressAdPhoto} />
+      <View style={style.containerTextInput}>
+        <Text style={style.font}>Agregar Persona</Text>
+        <TextBox
+          placeholder="Nombre"
+          value={name}
+          onChangeText={onChangeName}
+          alt={25}
+          multiline={false}
+          numLine={1}
+        />
+        <TextBox
+          placeholder="Mails Principal"
+          value={mailp}
+          onChangeText={onChangeMailp}
+          alt={25}
+          multiline={false}
+          numLine={1}
+        />
+        <TextBox
+          placeholder="Mail Secundario"
+          value={mails}
+          onChangeText={onChangeMails}
+          alt={25}
+          multiline={false}
+          numLine={1}
+        />
+        <TextBox
+          placeholder="Telefono Principal"
+          value={phone}
+          onChangeText={onChangePhone}
+          alt={25}
+          multiline={false}
+          numLine={1}
+        />
+        <TextBox
+          placeholder="Telefono Secundario"
+          value={phones}
+          onChangeText={onChangePhones}
+          alt={25}
+          multiline={false}
+          numLine={1}
+        />
+        <Text style={style.font}>Redes Sociales</Text>
+        <TextBox
+          placeholder="Facebook"
+          value={face}
+          onChangeText={onChangeFace}
+          alt={25}
+          multiline={false}
+          numLine={1}
+        />
+        <TextBox
+          placeholder="Instagram"
+          value={insta}
+          onChangeText={onChangeInsta}
+          alt={25}
+          multiline={false}
+          numLine={1}
+        />
+        <TextBox
+          placeholder="Linkedin"
+          value={link}
+          onChangeText={onChangeLink}
+          alt={25}
+          multiline={false}
+          numLine={1}
+        />
+        <Boton title="Direccion" bkcolor={Color.primary} color={Color.white} onPress={onPressAddAdress} />
+        <Boton title="Fotos" bkcolor={Color.primary} color={Color.white} onPress={onPressAdPhoto} />
+      </View>
     </View>
   );
 }
@@ -37,8 +154,25 @@ export default AddPersons;
 
 const style = StyleSheet.create({
   container: {
-    justifyContent: "center",
-    alignItems: "center",
     backgroundColor: Color.white,
-  }
+    alignItems: "center",
+    justifyContent: "center",
+    height: '100%',
+  },
+  containerTextInput: {
+    alignItems: "center",
+    backgroundColor: Color.primary,
+    width: 404,
+    height: "70%",
+    borderRadius: 30,
+  },
+  font: {
+    fontFamily: 'Montserrat-Regular',
+    fontSize: 18,
+    color: Color.white,
+    marginHorizontal: 25,
+    marginVertical: 10,
+    alignSelf: 'baseline',
+    marginLeft: 30,
+  },
 });

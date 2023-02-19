@@ -153,16 +153,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     height: '100%',
   },
-
-
-  containerImage: {
-    alignItems: "flex-start",
-  },
-  imagen2: {
-    marginTop: 15,
-    marginBottom: 30,
-    marginLeft: 19,
-  },
   containerTextInput: {
     alignItems: "center",
     backgroundColor: Color.primary,
