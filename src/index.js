@@ -2,7 +2,7 @@ import { ActivityIndicator, SafeAreaView, StatusBar, StyleSheet, Text, TextInput
 import React, { useState } from "react";
 
 import AppNavigator from "./navigation/"
-import Color from './constanst/color';
+import Color from './constants/color';
 import Inicio from "./screens/Welcome";
 import { Provider } from 'react-redux';
 import store from "./store/index";

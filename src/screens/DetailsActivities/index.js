@@ -1,7 +1,7 @@
 import { Boton, HLogo, PostHeader } from "../../components/index";
 import { Image, SafeAreaView, StyleSheet, Text, View } from "react-native";
 
-import Color from "../../constanst/color";
+import Color from "../../constants/color";
 import React from "react";
 import { StatusBar } from "expo-status-bar";
 

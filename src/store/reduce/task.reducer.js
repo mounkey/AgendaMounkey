@@ -1,4 +1,4 @@
-import { Tasks } from '../../constanst/Data/index';
+import { Tasks } from '../../constants/data/index';
 import { taskTypes } from '../types/index'
 const { GET_TASKS } = taskTypes;
 

@@ -2,7 +2,7 @@ import { Boton, PhotoButton, PostHeader, TextBox } from "../../components/index"
 import React, { useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
 
-import Color from "../../constanst/color";
+import Color from "../../constants/color";
 
 const AddPersons = ( {navigation} ) => {
 

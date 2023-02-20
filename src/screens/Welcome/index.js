@@ -2,7 +2,7 @@ import { Image, SafeAreaView, StyleSheet, Text, TextInput, View } from "react-na
 import React, { useState } from "react";
 
 import { Boton } from "../../components/index";
-import Color from "../../constanst/color";
+import Color from "../../constants/color";
 import { StatusBar } from "expo-status-bar";
 
 export default function Welcome({ navigation }) {

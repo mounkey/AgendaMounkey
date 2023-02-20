@@ -2,7 +2,7 @@ import { FlatList, StyleSheet, Text, View } from "react-native";
 import {HLogo, PostHeaderPlus} from '../../components/index';
 import { useDispatch, useSelector } from 'react-redux';
 
-import Color from "../../constanst/color";
+import Color from "../../constants/color";
 import React from 'react';
 import { getTasks } from '../../store/actions';
 

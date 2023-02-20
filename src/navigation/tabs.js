@@ -1,6 +1,6 @@
 import ActivityNavigator from './stack/activity';
 import AddNavigator from './stack/add';
-import Color from '../constanst/color';
+import Color from '../constants/color';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import React from 'react';
 import ScheduleNavigator from './stack/schedule';

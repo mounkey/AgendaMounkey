@@ -1,7 +1,7 @@
 import { Boton, PhotoButton, PostHeader } from "../../components/index";
 import { StyleSheet, Text, View } from "react-native";
 
-import Color from "../../constanst/color";
+import Color from "../../constants/color";
 import React from "react";
 
 const AddPhoto = () => {

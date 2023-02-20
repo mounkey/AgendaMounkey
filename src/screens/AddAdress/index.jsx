@@ -2,7 +2,7 @@ import { Boton, PhotoButton, PostHeader, TextBox } from "../../components";
 import { Image, SafeAreaView, StyleSheet, Text, View } from "react-native";
 import React, { useState } from "react";
 
-import Color from "../../constanst/color";
+import Color from "../../constants/color";
 
 const AddAdress = ( {navigation}) => {
   //useState

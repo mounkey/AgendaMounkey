@@ -2,7 +2,7 @@ import { Alert, Button, FlatList, Image, SafeAreaView, StyleSheet, Text, Touchab
 import { Boton, HLogo, PostHeader, TextBox } from "../../components/index";
 import React, { useState } from "react";
 
-import Color from "../../constanst/color";
+import Color from "../../constants/color";
 import { StatusBar } from "expo-status-bar";
 
 export default function Activities({ navigation }) {
