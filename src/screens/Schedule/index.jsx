@@ -29,9 +29,9 @@ export default Schedule;
 
 const style = StyleSheet.create({
   container: {
-    justifyContent: "center",
     alignItems: "center",
     backgroundColor: Color.white,
+    height: "100%",
   }
 });
 
