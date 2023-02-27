@@ -41,6 +41,7 @@ export const addTask = (item) => {
           date: item.date,
           details: item.details,
           description: item.description,
+          status: item.status,
         })
       });
       dispatch({
@@ -50,6 +51,7 @@ export const addTask = (item) => {
         date: item.date,
         details: item.details,
         description: item.description,
+        status: item.status,
       });
     }catch(error){
       console.log(error);
