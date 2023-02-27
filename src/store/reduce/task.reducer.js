@@ -1,6 +1,7 @@
 import { Tasks } from '../../constants/data/index';
 import { taskTypes } from '../types/index'
-const { GET_TASKS } = taskTypes;
+
+const { GET_TASKS, ADD_TASK, REMOVE_TASK } = taskTypes;
 
 const  initialState ={
   tasks: Tasks,
@@ -19,6 +20,12 @@ const tasksReducer = (state = initialState, action) => {
       ...state,
       selected: state.tasks[indexTask],
     };
+
+    case ADD_TASK:
+
+
+
+
 
     default:
       return state;
