@@ -50,7 +50,7 @@ const  ImageSelector= ({onImage}) =>{
         }
       </View>
       <Boton onPress ={takeImageHandler} title='Seleccionar imagen' bkcolor={Color.primary} color={Color.white}/>
-    </View>
+    </View >
     );
 }
 
