@@ -4,4 +4,4 @@ export { default as HLogo } from './headLogo/index';
 export { default as PostHeader } from './postheader/index';
 export { default as PostHeaderPlus } from './postheaderplus/index';
 export { default as PhotoButton } from './photobutton/index';
-export { default as ImageSelector} from './imagen-selector';
+export { default as ImageSelector} from './imagenSelector';

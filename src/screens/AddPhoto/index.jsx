@@ -1,4 +1,4 @@
-import { Boton, ImageSelector, PhotoButton, PostHeader } from "../../components/index";
+import { ImageSelector, PhotoButton, PostHeader } from "../../components/index";
 import React,  { useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
 

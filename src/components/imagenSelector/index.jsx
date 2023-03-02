@@ -3,7 +3,7 @@ import * as Permissions from 'expo-permissions';
 
 import { Alert, Image, Text, View } from 'react-native';
 
-import Boton from '../index';
+import  { Boton } from '../index';
 import Color from '../../constants/color';
 import {styles} from './style';
 import { useState } from 'react';
@@ -34,8 +34,7 @@ const  ImageSelector= ({onImage}) =>{
       aspect: [16, 9],
       quality: 0.5
     });
-
-    setPickedUrl(image.uri);
+    setPickedUrl(image.assets.uri);
     onImage(pickedUrl);
   }
 
@@ -46,7 +45,7 @@ const  ImageSelector= ({onImage}) =>{
           !pickedUrl ? (
             <Text style={styles.text}>No image picked yet.</Text>
           ) : (
-            <Image style={styles.image} source={{ uri: pickedUrl }} />
+            <Text>{pickedUrl.toString()}</Text>
           )
         }
       </View>
