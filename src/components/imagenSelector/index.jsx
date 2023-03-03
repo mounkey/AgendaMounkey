@@ -1,10 +1,10 @@
 import * as ImagePicker from 'expo-image-picker';
-import * as Permissions from 'expo-permissions';
 
 import { Alert, Image, Text, View } from 'react-native';
 
-import  { Boton } from '../index';
+import   Boton  from '../boton/index';
 import Color from '../../constants/color';
+import React from 'react';
 import {styles} from './style';
 import { useState } from 'react';
 
@@ -12,8 +12,8 @@ const  ImageSelector= ({onImage}) =>{
   const [pickedUrl, setPickedUrl] = useState(null);
 
   const verifyPermissions = async () => {
-    const result = await Permissions.askAsync(Permissions.CAMERA, Permissions.CAMERA_ROLL);
-    if (result.status !== 'granted') {
+   const {status} = await ImagePicker.requestCameraPermissionsAsync();
+    if (status !== 'granted') {
       Alert.alert(
         'Insufficient permissions!',
         'You need to grant camera permissions to use this app.',
@@ -26,17 +26,17 @@ const  ImageSelector= ({onImage}) =>{
 
   const takeImageHandler = async () => {
     const hasPermission = await verifyPermissions();
-    if (!hasPermission) {
-      return;
-    }
+    if (!hasPermission) return;
+
     const image = await ImagePicker.launchCameraAsync({
       allowsEditing: true,
       aspect: [16, 9],
-      quality: 0.5
+      quality: 0.5,
     });
-    setPickedUrl(image.assets.uri);
-    onImage(pickedUrl);
-  }
+
+    setPickedUrl(image.assets[0].uri);
+    onImage(image.assets[0].uri);
+  };
 
   return (
     <View style={styles.container}>
@@ -45,7 +45,11 @@ const  ImageSelector= ({onImage}) =>{
           !pickedUrl ? (
             <Text style={styles.text}>No image picked yet.</Text>
           ) : (
-            <Text>{pickedUrl.toString()}</Text>
+            <>
+                <Image style={styles.image} source={{ uri: pickedUrl }} />
+
+            </>
+
           )
         }
       </View>
