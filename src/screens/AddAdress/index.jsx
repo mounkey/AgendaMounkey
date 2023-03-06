@@ -1,3 +1,5 @@
+import * as Location from "expo-location";
+
 import { Boton, PhotoButton, PostHeader, TextBox } from "../../components";
 import { Image, SafeAreaView, StyleSheet, Text, View } from "react-native";
 import React, { useState } from "react";
@@ -6,13 +8,16 @@ import Color from "../../constants/color";
 
 const AddAdress = ( {navigation}) => {
   //useState
-  const [adress, setAdress] = useState("");
+  const [address, setAddress] = useState("");
   const [city, setCity] = useState("");
-  const [country, seTCountry] = useState("");
+  const [country, setCountry] = useState("");
+  const [coords, setCoords] = useState([]);
+  const [wCoords, setWCoords] = useState("");
+
 
   //onChangeAdress
-  const onChangeAdress = (text) => {
-    setAdress(text);
+  const onChangeAddress = (text) => {
+    setAddress(text);
   };
 
   //onChangeCity
@@ -22,8 +27,10 @@ const AddAdress = ( {navigation}) => {
 
   //onChangeCountry
   const onChangeCountry = (text) => {
-    seTCountry(text);
+    setCountry(text);
   };
+
+
 
   //onPressCamera
   const onPressCamera = () => {
@@ -36,13 +43,35 @@ const AddAdress = ( {navigation}) => {
   };
 
   //onPressObtener
-  const onPressObtener = () => {
-    console.log("hola");
+  const onPressObtener = async() => {
+    const largeAddress = address + " " + city + " " + country;
+    const geocodedLocation = await Location.geocodeAsync(largeAddress);
+    const{latitude, longitude} = geocodedLocation[0];
+    setCoords({lat:latitude, lgn: longitude}) ;
+    onChangeCoords(coords);
+    };
+
+  //onChangeCoords
+  const onChangeCoords = (coord) => {
+    if (coord.lat == "" && coord.lgn == "")
+    {
+      console.log("No hay coordenadas");
+    }
+    else
+    {
+      const {lat, lgn} = coord;
+      setWCoords("Coordenadas: Latitud: " + lat + " Longitud: " + lgn);
+    }
+
   };
 
   //onPressReset
   const onPressReset = () => {
-    console.log("hola");
+    setAddress("");
+    setCity("");
+    setCountry("");
+    setCoords({lat: "", lgn: ""});
+    setWCoords("");
   };
 
 
@@ -56,8 +85,8 @@ const AddAdress = ( {navigation}) => {
         <Text style={style.font}>Agregar Direccion</Text>
         <TextBox
           placeholder="Direccion"
-          value={adress}
-          onChangeText={onChangeAdress}
+          value={address}
+          onChangeText={onChangeAddress}
           alt={25}
           multiline={false}
           numLine={1}
@@ -87,9 +116,10 @@ const AddAdress = ( {navigation}) => {
             <Image source={require('../../../assets/mapa.png')}/>
           </View>
         </View>
-        <Text style={style.textAdress}>Direccion: {adress}</Text>
+        <Text style={style.textAdress}>Direccion: {address}</Text>
         <Text style={style.textAdress}>Ciudad: {city}</Text>
-        <Text style={style.textAdress}> Pais: {country}</Text>
+        <Text style={style.textAdress}>Pais: {country}</Text>
+        <Text style={style.textAdress}>{wCoords}</Text>
         <Boton title="Guardar" bkcolor={Color.primary} color={Color.white} onPress={onPressall} />
       </View>
     </SafeAreaView>
@@ -123,7 +153,7 @@ const style = StyleSheet.create({
   },
   containerMap: {
     width: '50%',
-    height: '45%',
+    height: '42%',
     alignItems: 'center',
   },
 
@@ -135,11 +165,12 @@ const style = StyleSheet.create({
   map: {
     marginTop: 10,
   },
+
   textAdress:{
     fontFamily: 'Montserrat-Regular',
     fontSize: 15,
     color: Color.white,
-    marginHorizontal: 25,
+    marginHorizontal: 20,
     alignSelf: 'flex-start',
   },
 });
