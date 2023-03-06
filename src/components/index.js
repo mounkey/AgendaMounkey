@@ -5,3 +5,4 @@ export { default as PostHeader } from './postheader/index';
 export { default as PostHeaderPlus } from './postheaderplus/index';
 export { default as PhotoButton } from './photobutton/index';
 export { default as ImageSelector} from './imagenSelector';
+export { default as MapPreview } from './mapPreview/index';

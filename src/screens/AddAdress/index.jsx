@@ -1,6 +1,6 @@
 import * as Location from "expo-location";
 
-import { Boton, PhotoButton, PostHeader, TextBox } from "../../components";
+import { Boton, MapPreview, PhotoButton, PostHeader, TextBox } from "../../components";
 import { Image, SafeAreaView, StyleSheet, Text, View } from "react-native";
 import React, { useState } from "react";
 
@@ -11,9 +11,8 @@ const AddAdress = ( {navigation}) => {
   const [address, setAddress] = useState("");
   const [city, setCity] = useState("");
   const [country, setCountry] = useState("");
-  const [coords, setCoords] = useState([]);
+  const [coords, setCoords] = useState(null);
   const [wCoords, setWCoords] = useState("Coordenadas: No hay coordenadas");
-
 
   //onChangeAdress
   const onChangeAddress = (text) => {
@@ -113,7 +112,9 @@ const AddAdress = ( {navigation}) => {
             <Boton title="Reset" bkcolor={Color.primary} color={Color.white} onPress={onPressReset} />
           </View>
           <View style = {style.map}>
-            <Image source={require('../../../assets/mapa.png')}/>
+            <MapPreview location={coords} style={style.mapReal} >
+              <Text>Hola</Text>
+            </MapPreview>
           </View>
         </View>
         <Text style={style.textAdress}>Direccion: {address}</Text>
@@ -151,6 +152,7 @@ const style = StyleSheet.create({
     alignSelf: 'baseline',
     marginLeft: 30,
   },
+
   containerMap: {
     width: '50%',
     height: '42%',
@@ -164,6 +166,12 @@ const style = StyleSheet.create({
 
   map: {
     marginTop: 10,
+  },
+
+  mapReal:{
+    flex:1,
+    width: '100%',
+    height: '100%',
   },
 
   textAdress:{
