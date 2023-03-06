@@ -5,8 +5,19 @@ import AppNavigator from "./navigation/"
 import Color from './constants/color';
 import Inicio from "./screens/Welcome";
 import { Provider } from 'react-redux';
+import { init } from './db/index';
 import store from "./store/index";
 import { useFonts } from 'expo-font';
+
+init ()
+.then(() => {
+  console.log('Initialized database');
+})
+.catch(err => {
+  console.log('Initializing db failed.');
+  console.log(err);
+});
+
 
 export default function index() {
 

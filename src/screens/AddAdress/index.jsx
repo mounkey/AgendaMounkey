@@ -12,7 +12,7 @@ const AddAdress = ( {navigation}) => {
   const [city, setCity] = useState("");
   const [country, setCountry] = useState("");
   const [coords, setCoords] = useState([]);
-  const [wCoords, setWCoords] = useState("");
+  const [wCoords, setWCoords] = useState("Coordenadas: No hay coordenadas");
 
 
   //onChangeAdress
