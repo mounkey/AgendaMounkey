@@ -1,7 +1,7 @@
 import { Tasks } from '../../constants/data/index';
 import { taskTypes } from '../types/index'
 
-const { GET_TASKS, ADD_TASK, REMOVE_TASK, CHANGE_STATUS  } = taskTypes;
+const { GET_TASKS, GET_TASK_ALL, ADD_TASK, REMOVE_TASK, CHANGE_STATUS  } = taskTypes;
 
 const  initialState ={
   tasks: Tasks,
@@ -10,7 +10,14 @@ const  initialState ={
 
 const tasksReducer = (state = initialState, action) => {
   switch(action.type){
-   case GET_TASKS:
+
+    case GET_TASK_ALL:
+      return{
+        ...state,
+        tasks: action.tasks
+      }
+
+    case GET_TASKS:
     return{
       ...state,
       selected: action.tasks

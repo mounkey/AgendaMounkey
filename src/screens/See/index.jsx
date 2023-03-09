@@ -4,11 +4,17 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import Color from "../../constants/color";
 import React from 'react';
-import { getTasks } from '../../store/actions';
+import { getTaskAll } from '../../store/actions';
 
 const See = ({ navigation }) => {
   const dispatch = useDispatch();
   const tasks = useSelector((state) => state.task.tasks);
+  console.log (tasks);
+
+  //useEfect
+ useEffect(() => {
+    dispatch((getTaskAll()));
+  }, []);
 
   //keyExtractor
   const keyExtractor = (item, index) => index.toString();

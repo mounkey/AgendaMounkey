@@ -1,6 +1,28 @@
 import { REALTIME_DATABASE_URL } from '../../constants/firebase/index';
 import { taskTypes } from "../types/index";
-const {GET_TASKS, ADD_TASK, REMOVE_TASK, CHANGE_STATUS} = taskTypes;
+const {GET_TASKS, GET_TASK_ALL,ADD_TASK, REMOVE_TASK, CHANGE_STATUS} = taskTypes;
+
+export const getTaskAll = () => {
+  return async(dispatch) => {
+    try {
+      const response= await fetch(`${REALTIME_DATABASE_URL}/tasks.json`, {
+        method: 'GET',
+        header: {
+          'Content-Type': 'application/json',
+        },
+      });
+      console.log(response)
+      const data = await response.json();
+      dispatch({
+        type: GET_TASKS_ALL,
+        payload: data,
+      })
+    }
+    catch(error){
+      console.log(error);
+    }
+  }
+};
 
 export const getTasks = (id) => {
   return async (dispatch) => {

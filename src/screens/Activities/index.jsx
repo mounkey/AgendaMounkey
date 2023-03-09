@@ -1,11 +1,16 @@
 import { Alert, Button, FlatList, Image, SafeAreaView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { Boton, HLogo, PostHeader, TextBox } from "../../components/index";
-import React, { useState } from "react";
+import React, { useState, useEffect} from "react";
+import {useSelector, useDispatch} from 'react-redux';
 
 import Color from "../../constants/color";
 import { StatusBar } from "expo-status-bar";
+import { addTask } from "../../store/actions";
 
 export default function Activities({ navigation }) {
+  const dispatch = useDispatch();
+  const list = useSelector((state) =>  state.tasks.tasks);
+
   // useState
   const [name, setName] = useState("");
   const [reason, setReason] = useState("");
@@ -41,17 +46,7 @@ export default function Activities({ navigation }) {
       Alert.alert("Error", "Todos los campos son obligatorios")
     }
     else {
-      const task = {
-        id: Date.now(),
-        name: name,
-        reason: reason,
-        detail: detail,
-        date: date(),
-      };
-      setTasks([...tasks, task]);
-      setName("");
-      setReason("");
-      setDetail("");
+      dispatch(addTask(name, date,details, reason, true));
     }
   };
   //onPressReturn
