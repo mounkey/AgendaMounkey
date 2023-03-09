@@ -1,28 +1,6 @@
 import { REALTIME_DATABASE_URL } from '../../constants/firebase/index';
 import { taskTypes } from "../types/index";
-const {GET_TASKS, GET_TASK_ALL,ADD_TASK, REMOVE_TASK, CHANGE_STATUS} = taskTypes;
-
-export const getTaskAll = () => {
-  return async(dispatch) => {
-    try {
-      const response= await fetch(`${REALTIME_DATABASE_URL}/tasks.json`, {
-        method: 'GET',
-        header: {
-          'Content-Type': 'application/json',
-        },
-      });
-      console.log(response)
-      const data = await response.json();
-      dispatch({
-        type: GET_TASKS_ALL,
-        payload: data,
-      })
-    }
-    catch(error){
-      console.log(error);
-    }
-  }
-};
+const {GET_TASKS, ADD_TASK, REMOVE_TASK, CHANGE_STATUS} = taskTypes;
 
 export const getTasks = (id) => {
   return async (dispatch) => {
@@ -39,7 +17,7 @@ export const getTasks = (id) => {
       const filterTask = test.filter(item=> item.id === id)
       dispatch({
         type: GET_TASKS,
-        payload: data,
+        tasks: data,
       });
     }
     catch(error){
@@ -48,32 +26,30 @@ export const getTasks = (id) => {
   }
 };
 
-export const addTask = (item) => {
+export const addTask = (name, date, detail, reason, status) => {
   return async (dispatch) => {
     try {
       const response = await fetch (`${REALTIME_DATABASE_URL}/tasks.json`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-
         },
         body: JSON.stringify({
-          id: Date.toString(),
-          name: item.name,
-          date: item.date,
-          details: item.details,
-          description: item.description,
-          status: item.status,
+          name: name,
+          date: date,
+          detail: detail,
+          reason: reason,
+          status: status,
         })
       });
+      console.log(name, date, detail, reason, status );
       dispatch({
         type: ADD_TASK,
-        id: Date.toString(),
-        name: item.name,
-        date: item.date,
-        details: item.details,
-        description: item.description,
-        status: item.status,
+        name: name,
+        date: date,
+        detail: detail,
+        reason: reason,
+        status: status,
       });
     }catch(error){
       console.log(error);

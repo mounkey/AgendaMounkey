@@ -1,10 +1,10 @@
 import { FlatList, StyleSheet, Text, View } from "react-native";
 import {HLogo, PostHeaderPlus} from '../../components/index';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import Color from "../../constants/color";
-import React from 'react';
-import { getTaskAll } from '../../store/actions';
+import { getTasks } from '../../store/actions';
 
 const See = ({ navigation }) => {
   const dispatch = useDispatch();
@@ -12,9 +12,6 @@ const See = ({ navigation }) => {
   console.log (tasks);
 
   //useEfect
- useEffect(() => {
-    dispatch((getTaskAll()));
-  }, []);
 
   //keyExtractor
   const keyExtractor = (item, index) => index.toString();

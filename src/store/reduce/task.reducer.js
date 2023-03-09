@@ -1,21 +1,14 @@
-import { Tasks } from '../../constants/data/index';
 import { taskTypes } from '../types/index'
 
 const { GET_TASKS, GET_TASK_ALL, ADD_TASK, REMOVE_TASK, CHANGE_STATUS  } = taskTypes;
 
 const  initialState ={
-  tasks: Tasks,
+  tasks: [],
   selected: [],
 };
 
 const tasksReducer = (state = initialState, action) => {
   switch(action.type){
-
-    case GET_TASK_ALL:
-      return{
-        ...state,
-        tasks: action.tasks
-      }
 
     case GET_TASKS:
     return{
@@ -25,7 +18,7 @@ const tasksReducer = (state = initialState, action) => {
 
     case ADD_TASK:
       return{
-        selected: [...state.selected, {name: action.name, date: action.date, details: action.details, description: action.description, status: action.statuys}]
+        selected: [...state.selected, {name: action.name, date: action.date, details: action.details, description: action.description, status: action.status}]
       }
 
     case REMOVE_TASK:

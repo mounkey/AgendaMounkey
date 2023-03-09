@@ -1,22 +1,20 @@
-import { Alert, Button, FlatList, Image, SafeAreaView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Alert, SafeAreaView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { Boton, HLogo, PostHeader, TextBox } from "../../components/index";
-import React, { useState, useEffect} from "react";
-import {useSelector, useDispatch} from 'react-redux';
+import React, { useState } from "react";
+import { useDispatch, useSelector } from 'react-redux';
 
 import Color from "../../constants/color";
 import { StatusBar } from "expo-status-bar";
 import { addTask } from "../../store/actions";
 
 export default function Activities({ navigation }) {
-  const dispatch = useDispatch();
-  const list = useSelector((state) =>  state.tasks.tasks);
 
+  const dispatch = useDispatch();
+  const task = useSelector((state) => state.task)
   // useState
   const [name, setName] = useState("");
   const [reason, setReason] = useState("");
   const [detail, setDetail] = useState("");
-  const [tasks, setTasks] = useState([]);
-  const [selected, setSelected] = useState(false);
   //functiom
   const date = () => {
     const date = Date.now();
@@ -46,41 +44,9 @@ export default function Activities({ navigation }) {
       Alert.alert("Error", "Todos los campos son obligatorios")
     }
     else {
-      dispatch(addTask(name, date,details, reason, true));
+      dispatch(addTask(name, date(), detail, reason, false));
     }
   };
-  //onPressReturn
-  /*const onPressReturn = () =>{
-    setSelected(!selected);
-    onSelectedChangePage(selected);
-  }*/
-
-  //render Item
-  const renderItem = ({ item }) => (
-    <View style={styles.render}>
-      <Text style={styles.fontRender}>Nombre: {item.name}</Text>
-      <Text style={styles.fontRender}>Motivo: {item.reason}</Text>
-      <Text style={styles.fontRender}>Detalle: {item.detail}</Text>
-      <Text style={styles.fontRender}>Fecha: {item.date}</Text>
-      <TouchableOpacity onPress={() => onPressDetails(item)}>
-        <Text style={styles.fontRender}>Detalles</Text>
-      </TouchableOpacity>
-
-    </View>
-
-  );
-
-  const onPressDetails = ({ name, reason, detail, date}) => {
-    navigation.navigate('Detalles', {
-      name: name,
-      reason: reason,
-      detail: detail,
-      date: date,
-    });
-
-  };
-
-  const keyExtractor = (item) => item.id;
   return (
     <SafeAreaView style={styles.container}>
       <HLogo/>
