@@ -1,10 +1,13 @@
-import { Boton, PhotoButton, PostHeader, TextBox } from "../../components/index";
+import { Alert, Boton, PhotoButton, PostHeader, TextBox } from "../../components/index";
 import React, { useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
+
+
 
 import Color from "../../constants/color";
 
 const AddPersons = ( {navigation} ) => {
+
 
   //useState
   const [name, setName] = useState("");
@@ -58,7 +61,15 @@ const AddPersons = ( {navigation} ) => {
 
   //onPressAddAdress
   const onPressAddAdress = () => {
-    navigation.navigate('ADireccion');
+    if(name === "" || mailp === "" || mails === "" || phone === "" || phone2 === "" || face === "" || insta === "" || link ===""){
+      Alert.Alert("Error", "Todos los campos son obligatorios");
+    }
+    else{
+     // dispatch(addPerson(name, mailp, mails, phone, phones, face, insta, link ));
+      navigation.navigate('ADireccion');
+    }
+
+
   };
 
   //onPressAdPhoto
@@ -144,7 +155,6 @@ const AddPersons = ( {navigation} ) => {
           numLine={1}
         />
         <Boton title="Direccion" bkcolor={Color.primary} color={Color.white} onPress={onPressAddAdress} />
-        <Boton title="Fotos" bkcolor={Color.primary} color={Color.white} onPress={onPressAdPhoto} />
       </View>
     </View>
   );

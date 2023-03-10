@@ -11,9 +11,13 @@ const tasksReducer = (state = initialState, action) => {
   switch(action.type){
 
     case GET_TASKS:
-    return{
-      ...state,
-      selected: action.tasks
+      const indexTasks = state.tasks.findIndex(
+        (tasks) => task.id === ActivityIndicatorComponent.payload
+      );
+      if (indexTasks === -1) return state;
+      return{
+        ...state,
+        selected: action.tasks
     }
 
     case ADD_TASK:
