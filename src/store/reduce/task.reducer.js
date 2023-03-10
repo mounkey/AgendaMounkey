@@ -9,10 +9,16 @@ const  initialState ={
 
 const tasksReducer = (state = initialState, action) => {
   switch(action.type){
+    case GET_TASK_ALL:
+      return{
+        ...state,
+        tasks: action.tasks
+      }
+
 
     case GET_TASKS:
       const indexTasks = state.tasks.findIndex(
-        (tasks) => task.id === ActivityIndicatorComponent.payload
+        (tasks) => tasks.id === action.id
       );
       if (indexTasks === -1) return state;
       return{

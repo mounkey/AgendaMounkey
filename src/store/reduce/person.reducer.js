@@ -1,7 +1,7 @@
 import { PERSONS } from '../../constants/data/index';
 import {personstypes} from '../types/index';
 
-const {GET_PERSONS} = personstypes;
+const {GET_PERSONS, ADD_PERSONS} = personstypes;
 
 const initialState ={
   persons: PERSONS,
@@ -20,6 +20,12 @@ const personsResducer = ( state = initialState, action) => {
         ...state,
         selected: state.persons[indexPerson],
       }
+
+    case ADD_PERSONS:
+      return {
+        ...state,
+        persons: [...state.persons, { names: action.names, mailp: action.mailp, mails: action.mails, phone: action.phone, phones: action.phones, face: action.face, insta: action.insta, link: action.link, address: action.address, city: action.city, country: action.country, coords: action.coords, photo: action.photo }],
+      };
 
     default:
       return state;

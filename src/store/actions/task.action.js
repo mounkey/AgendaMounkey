@@ -1,6 +1,6 @@
-import { REALTIME_DATABASE_URL } from '../../constants/firebase/index';
+import { REALTIME_DATABASE_URL } from '../../constants/firebase/';
 import { taskTypes } from "../types/index";
-const {GET_TASKS, ADD_TASK, REMOVE_TASK, CHANGE_STATUS} = taskTypes;
+const {GET_TASKS, GET_TASK_ALL, ADD_TASK, REMOVE_TASK, CHANGE_STATUS} = taskTypes;
 
 export const getTasks = (id) => {
   return async (dispatch) => {
@@ -13,7 +13,7 @@ export const getTasks = (id) => {
       });
 
       const data = await response.json();
-      const test = Objecvt.keys(data).map(key => data[key]);
+      const test = Object.keys(data).map(key => data[key]);
       const filterTask = test.filter(item=> item.id === id)
       dispatch({
         type: GET_TASKS,
@@ -24,6 +24,30 @@ export const getTasks = (id) => {
       console.log(error);
     }
   }
+};
+
+export const getTaskAll = () => {
+  return async (dispatch) => {
+    try{
+      const response = await fetch (`${REALTIME_DATABASE_URL}/tasks.json`,{
+        method: 'GET',
+        headers: {
+         'Content-Type': 'application/json',
+        },
+      });
+      const data = await response.json();
+      const test = Object.keys(data).map(key => data[key]);
+      dispatch({
+        type: GET_TASK_ALL,
+        tasks: data,
+      });
+
+    }
+    catch(error){
+      console.log(error);
+    }
+  }
+
 };
 
 export const addTask = (name, date, detail, reason, status) => {

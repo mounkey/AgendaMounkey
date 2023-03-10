@@ -1,13 +1,17 @@
 import { Alert, Boton, PhotoButton, PostHeader, TextBox } from "../../components/index";
 import React, { useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
-
-
+import { useDispatch, useSelector } from "react-redux";
 
 import Color from "../../constants/color";
+import { addPerson } from '../../store/actions';
 
 const AddPersons = ( {navigation} ) => {
+  //dispatch
+  const dispatch = useDispatch();
 
+  //useSelector
+  const persons = useSelector((state) => state.persons);
 
   //useState
   const [name, setName] = useState("");
@@ -61,12 +65,12 @@ const AddPersons = ( {navigation} ) => {
 
   //onPressAddAdress
   const onPressAddAdress = () => {
-    if(name === "" || mailp === "" || mails === "" || phone === "" || phone2 === "" || face === "" || insta === "" || link ===""){
+    if(name === "" || mailp === "" || mails === "" || phone === "" || phones === "" || face === "" || insta === "" || link ===""){
       Alert.Alert("Error", "Todos los campos son obligatorios");
     }
     else{
-     // dispatch(addPerson(name, mailp, mails, phone, phones, face, insta, link ));
-      navigation.navigate('ADireccion');
+      dispatch(addPerson(name, mailp, mails, phone, phones, face, insta, link ));
+      //navigation.navigate('ADireccion');
     }
 
 
