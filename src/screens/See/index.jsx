@@ -23,11 +23,11 @@ const See = ({ navigation }) => {
   //renderItem
   const renderItem = ({ item }) => (
     <View style={styles.render}>
-      <Text style={styles.fontRender}>Nombre: {item.name}</Text>
-      <Text style={styles.fontRender}>Motivo: {item.reason}</Text>
-      <Text style={styles.fontRender}>Detalle: {item.detail}</Text>
-      <Text style={styles.fontRender}>Fecha: {item.date}</Text>
-      <Text style={styles.fontRender}>Hora: {item.status}</Text>
+      <Text style={styles.fontRender}>Nombre: {item[0].name}</Text>
+      <Text style={styles.fontRender}>Motivo: {/*item.reason*/}</Text>
+      <Text style={styles.fontRender}>Detalle: {/*item.detail*/}</Text>
+      <Text style={styles.fontRender}>Fecha: {/*item.date*/}</Text>
+      <Text style={styles.fontRender}>Hora: {/*item.status*/}</Text>
       <TouchableOpacity onPress={() => onPressDetails(item)}>
         <Text style={styles.fontRender}>Detalles</Text>
       </TouchableOpacity>

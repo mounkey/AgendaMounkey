@@ -1,4 +1,4 @@
-import { URL_AUTH_SIGN_IN, URL_AUTH_SIGN_UP } from "../../firebase";
+import { URL_AUTH_SIGN_IN, URL_AUTH_SIGN_UP } from "../../constants/firebase";
 
 import { userTypes } from '../types';
 
