@@ -1,8 +1,7 @@
-import { URL_AUTH_SIGN_IN, URL_AUTH_SIGN_UP } from "../../constants/firebase";
+import { URL_AUTH_SIGN_IN, URL_AUTH_SIGN_UP } from '../../constants/firebase';
+import { authTypes } from '../types';
 
-import { userTypes } from '../types';
-
-const {SIGN_UP, SIGN_IN, RECOVERY_PASSWORD} = userTypes;
+const { SIGN_UP, SIGN_IN } = authTypes;
 
 export const signUp = (email, password) => {
   return async (dispatch) => {
@@ -18,19 +17,22 @@ export const signUp = (email, password) => {
           returnSecureToken: true,
         }),
       });
+
       if (!response.ok) {
-        const errorResData = await response.json();
+        throw new Error('Something went wrong!');
       }
-      const resData = await response.json();
+
+      const data = await response.json();
+
       dispatch({
         type: SIGN_UP,
-        token: resData.idToken,
-        userID: resData.localId,
+        token: data.idToken,
+        userId: data.localId,
       });
-    } catch (err) {
-      console.log(error);
+    } catch (error) {
+      throw error;
     }
-  }
+  };
 };
 
 export const signIn = (email, password) => {
@@ -47,41 +49,15 @@ export const signIn = (email, password) => {
           returnSecureToken: true,
         }),
       });
-      
-      const resData = await response.json();
+
+      const data = await response.json();
       dispatch({
         type: SIGN_IN,
-        token: resData.idToken,
-        userID: resData.localId,
+        token: data.idToken,
+        userId: data.localId,
       });
-    } catch (err) {
-      console.log(error);
+    } catch (error) {
+      throw error;
     }
-  }
+  };
 };
-
-export const recoveryPassword = (email) => {
-  return async (dispatch) => {
-    try {
-      const response = await fetch(URL_AUTH_SIGN_IN, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          requestType: 'PASSWORD_RESET',
-          email,
-        }),
-      });
-      
-      const resData = await response.json();
-      dispatch({
-        type: RECOVERY_PASSWORD,
-        token: resData.idToken,
-        userID: resData.localId,
-      });
-    } catch (err) {
-      console.log(error);  
-    }
-  }
-}

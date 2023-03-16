@@ -1,9 +1,10 @@
 import { userTypes } from '../types';
 
-const {SIGN_UP, SIGN_IN, RECOVERY_PASSWORD} = userTypes;
+const { SIGN_UP, SIGN_IN}  = userTypes;
+
 const initialState = {
   token: null,
-  userID: null,
+  userId: null,
 };
 
 export const userReducer = (state = initialState, action) => {
@@ -12,19 +13,13 @@ export const userReducer = (state = initialState, action) => {
       return {
         ...state,
         token: action.token,
-        userID: action.userID,
+        userId: action.userId,
       };
     case SIGN_IN:
       return {
         ...state,
         token: action.token,
-        userID: action.userID,
-      };
-    case RECOVERY_PASSWORD:
-      return {
-        ...state,
-        token: action.token,
-        userID: action.userID,
+        userId: action.userId,
       };
     default:
       return state;

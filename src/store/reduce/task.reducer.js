@@ -15,7 +15,6 @@ const tasksReducer = (state = initialState, action) => {
         tasks: action.tasks
       }
 
-
     case GET_TASKS:
       const indexTasks = state.tasks.findIndex(
         (tasks) => tasks.id === action.id

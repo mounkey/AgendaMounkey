@@ -1,5 +1,4 @@
-export const userTypes={
+export const userTypes = {
   SIGN_UP: 'SIGN_UP',
   SIGN_IN: 'SIGN_IN',
-  RECOVERY_PASSWORD: 'REVOVERY_PASSWORD',
 }

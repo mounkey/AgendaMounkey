@@ -9,7 +9,6 @@ import Color from "../../constants/color";
 const See = ({ navigation }) => {
   const dispatch = useDispatch();
   const tasks = useSelector((state) => state.task.tasks);
-  console.log(tasks);
 
   //useEfect
   useEffect(() => {
@@ -23,7 +22,7 @@ const See = ({ navigation }) => {
   //renderItem
   const renderItem = ({ item }) => (
     <View style={styles.render}>
-      <Text style={styles.fontRender}>Nombre: {item[0].name}</Text>
+      <Text style={styles.fontRender}>Nombre: {item.name}</Text>
       <Text style={styles.fontRender}>Motivo: {/*item.reason*/}</Text>
       <Text style={styles.fontRender}>Detalle: {/*item.detail*/}</Text>
       <Text style={styles.fontRender}>Fecha: {/*item.date*/}</Text>
