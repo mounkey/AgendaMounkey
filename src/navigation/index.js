@@ -5,8 +5,7 @@ import TabsNavigator from './tabs';
 import AuthNavigator from './stack/auth';
 
 const AppNavigator = () => {
-  const userId = useSelector((state) => state.auth.userId);
-  console.log(userId);
+  const userId = useSelector((state) => state.user);
   return (
     <NavigationContainer>
       {userId ? <TabsNavigator /> : <AuthNavigator />}

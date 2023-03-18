@@ -1,14 +1,13 @@
-import { Image, SafeAreaView, StyleSheet, Text, TextInput, View,  Button } from "react-native";
-import React, { useState, useReducer } from "react";
-import { useDispatch } from "react-redux";
+/* eslint-disable no-case-declarations */
+import { useState, useReducer } from 'react';
+import { View, Button, TouchableOpacity, Text, KeyboardAvoidingView, Platform } from 'react-native';
+import { useDispatch } from 'react-redux';
 
-import { Input } from "../../components/index";
-import Color from "../../constants/color";
-import { StatusBar } from "expo-status-bar";
-
+import { styles } from './styles';
+import { Input } from '../../components';
+import Colors  from '../../constants/color';
 import { signIn, signUp } from '../../store/actions';
 import { UPDATED_FORM, onInputChange } from '../../utils/forms';
-
 
 const initialState = {
   email: { value: '', error: '', touched: false, hasError: true },
@@ -65,7 +64,7 @@ const Welcome = ({ navigation }) => {
           <Text style={styles.title}>{title}</Text>
           <Input
             placeholder="enter your email"
-            placeholderTextColor={THEME.colors.gray}
+            placeholderTextColor={Colors.gray}
             autoCapitalize="none"
             autoCorrect={false}
             onChangeText={(text) => onHandlerInputChange(text, 'email')}
@@ -78,7 +77,7 @@ const Welcome = ({ navigation }) => {
           />
           <Input
             placeholder="enter your password"
-            placeholderTextColor={THEME.colors.gray}
+            placeholderTextColor={Colors.gray}
             secureTextEntry
             autoCapitalize="none"
             autoCorrect={false}
@@ -91,7 +90,7 @@ const Welcome = ({ navigation }) => {
             labelStyle={styles.label}
           />
           <View style={styles.buttonContainer}>
-            <Button title={messageButton} color={THEME.colors.primary} onPress={onHandlerSubmit} />
+            <Button title={messageButton} color={Colors.primary} onPress={onHandlerSubmit} />
             <View style={styles.prompt}>
               <TouchableOpacity style={styles.promptButton} onPress={() => setIsLogin(!isLogin)}>
                 <Text style={styles.promptMessage}>{message}</Text>
@@ -105,59 +104,3 @@ const Welcome = ({ navigation }) => {
 };
 
 export default Welcome;
-
-export const styles = StyleSheet.create({
-  keybordContainer: {
-    flex: 1,
-  },
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  content: {
-    width: '80%',
-    maxWidth: 400,
-    padding: 15,
-    margin: 15,
-    borderColor: Colors.primary,
-    borderWidth: 1,
-    backgroundColor: Colors.white,
-    borderRadius: 5,
-    minHeight: 330,
-  },
-  title: {
-    fontSize: 18,
-    fontFamily: 'Monserrat-Medium',
-    textAlign: 'center',
-  },
-  label: {
-    fontSize: 14,
-    fontFamily: 'Monserrat-Regular',
-    marginVertical: 8,
-  },
-  buttonContainer: {
-    marginVertical: 10,
-  },
-  prompt: {
-    width: '100%',
-    alignItems: 'center',
-    marginVertical: 10,
-  },
-  promptButton: {
-    width: '100%',
-    backgroundColor: Color.secondary,
-    borderWidth: 1,
-    borderColor: Colors.primary,
-    padding: 10,
-    borderRadius: 5,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  promptMessage: {
-    fontSize: 14,
-    fontFamily: 'Monserrat-Medium',
-    color: THEME.colors.text,
-  },
-});
-
