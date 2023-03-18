@@ -1,6 +1,6 @@
 import { View, TextInput, Text } from 'react-native';
 
-import { styles } from './styles';
+import { styles } from './style';
 import { Color } from '../../constants/color';
 import Label from '../label';
 

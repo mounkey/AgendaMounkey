@@ -41,7 +41,7 @@ export const validateEmail = (name, value) => {
 
 export const UPDATED_FORM = 'UPDATED_FORM';
 
-export const onPutChange = (name, value, dispatch, formState) => {
+export const onInputChange = (name, value, dispatch, formState) => {
   const { hasError, error } = validateEmail(name, value);
   let isFormValid = true;
 

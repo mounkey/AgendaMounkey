@@ -1,24 +1,21 @@
 import { StyleSheet } from 'react-native';
 
-import Color from '../../constants/color';
+import  Colors from '../../constants/color';
 
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-  input: {
-    borderBottomColor: Color.primary,
-    borderBottomWidth: 1,
-    width: '90%',
+  label: {
+    fontSize: 14,
     fontFamily: 'Montserrat-Regular',
-    marginBottom: 10,
-  },
-  message: {
     marginVertical: 5,
+    color: Colors.white,
   },
-  helperText: {
+  sublabel: {
     fontSize: 12,
     fontFamily: 'Montserrat-Regular',
-    color: Color.white,
+    color: Colors.gray,
+    marginVertical: 5,
   },
 });

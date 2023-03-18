@@ -6,3 +6,5 @@ export { default as PostHeaderPlus } from './postheaderplus/index';
 export { default as PhotoButton } from './photobutton/index';
 export { default as ImageSelector} from './imagenSelector';
 export { default as MapPreview } from './mapPreview/index';
+export { default as Input } from './Input/index';
+export { default as Label } from './label/index';
