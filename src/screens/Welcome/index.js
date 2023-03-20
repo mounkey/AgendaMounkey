@@ -1,13 +1,13 @@
-/* eslint-disable no-case-declarations */
-import { useState, useReducer } from 'react';
-import { View, Button, TouchableOpacity, Text, KeyboardAvoidingView, Platform } from 'react-native';
-import { useDispatch } from 'react-redux';
-
-import { styles } from './styles';
-import { Input } from '../../components';
-import Colors  from '../../constants/color';
-import { signIn, signUp } from '../../store/actions';
+import { Button, Image, KeyboardAvoidingView, Platform, Text, TouchableOpacity, View } from 'react-native';
 import { UPDATED_FORM, onInputChange } from '../../utils/forms';
+import { signIn, signUp } from '../../store/actions';
+/* eslint-disable no-case-declarations */
+import { useReducer, useState } from 'react';
+
+import Colors  from '../../constants/color';
+import { Input } from '../../components';
+import { styles } from './styles';
+import { useDispatch } from 'react-redux';
 
 const initialState = {
   email: { value: '', error: '', touched: false, hasError: true },
@@ -60,6 +60,7 @@ const Welcome = ({ navigation }) => {
       behavior={Platform.OS === 'android' ? 'height' : 'padding'}
       enabled>
       <View style={styles.container}>
+        <Image style={styles.imagen2} source={require("../../../assets/logos.png")} />
         <View style={styles.content}>
           <Text style={styles.title}>{title}</Text>
           <Input
@@ -98,6 +99,7 @@ const Welcome = ({ navigation }) => {
             </View>
           </View>
         </View>
+        <Image style ={styles.foot}source={require('../../../assets/pielogo.png')}/>
       </View>
     </KeyboardAvoidingView>
   );

@@ -1,4 +1,5 @@
 import { URL_AUTH_SIGN_IN, URL_AUTH_SIGN_UP } from '../../constants/firebase';
+
 import { userTypes } from '../types';
 
 const { SIGN_UP, SIGN_IN } = userTypes;
@@ -17,22 +18,20 @@ export const signUp = (email, password) => {
           returnSecureToken: true,
         }),
       });
-
       if (!response.ok) {
-        throw new Error('Something went wrong!');
+        const errorResData = await response.json();
+        console.log(errorResData);
       }
-
-      const data = await response.json();
-
+      const resData = await response.json();
       dispatch({
         type: SIGN_UP,
-        token: data.idToken,
-        userId: data.localId,
+        token: resData.idToken,
+        userID: resData.localId,
       });
-    } catch (error) {
-      throw error;
+    } catch (err) {
+      console.log(err);
     }
-  };
+  }
 };
 
 export const signIn = (email, password) => {
@@ -50,14 +49,20 @@ export const signIn = (email, password) => {
         }),
       });
 
-      const data = await response.json();
+      if (response.ok) {
+        const errorResData = await response.json();
+        console.log(errorResData);
+      }
+
+      const resData = await response.json();
+      console.log (email);
       dispatch({
         type: SIGN_IN,
-        token: data.idToken,
-        userId: data.localId,
+        token: resData.idToken,
+        userID: resData.localId,
       });
-    } catch (error) {
-      throw error;
+    } catch (err) {
+      console.log(err);
     }
-  };
+  }
 };

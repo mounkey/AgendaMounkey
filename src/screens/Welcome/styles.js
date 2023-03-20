@@ -1,6 +1,5 @@
-import { StyleSheet } from 'react-native';
-
 import Colors from '../../constants/color';
+import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
   keybordContainer: {
@@ -10,6 +9,7 @@ export const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: Colors.white,
   },
   content: {
     width: '80%',
