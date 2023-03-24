@@ -1,3 +1,4 @@
+import { Boton, Input } from '../../components';
 import { Button, Image, KeyboardAvoidingView, Platform, Text, TouchableOpacity, View } from 'react-native';
 import { UPDATED_FORM, onInputChange } from '../../utils/forms';
 import { signIn, signUp } from '../../store/actions';
@@ -5,7 +6,6 @@ import { signIn, signUp } from '../../store/actions';
 import { useReducer, useState } from 'react';
 
 import Colors  from '../../constants/color';
-import { Input } from '../../components';
 import { styles } from './styles';
 import { useDispatch } from 'react-redux';
 
@@ -36,6 +36,7 @@ const formReducer = (state, action) => {
 };
 
 const Welcome = ({ navigation }) => {
+
   const dispatch = useDispatch();
   const [isLogin, setIsLogin] = useState(true);
   const [formState, dispatchFormState] = useReducer(formReducer, initialState);
@@ -44,6 +45,7 @@ const Welcome = ({ navigation }) => {
   const messageButton = isLogin ? 'Login' : 'Register';
 
   const onHandlerSubmit = () => {
+    const {password, email} = formState;
     dispatch(
       isLogin
         ? signIn(formState.email.value, formState.password.value)
@@ -54,6 +56,14 @@ const Welcome = ({ navigation }) => {
   const onHandlerInputChange = (value, type) => {
     onInputChange(type, value, dispatchFormState, formState);
   };
+
+  // on PressTasks
+  const onPresstaks = () => {
+    navigation.navigate('Mostrar');
+  }
+
+
+
   return (
     <KeyboardAvoidingView
       style={styles.keybordContainer}
@@ -100,6 +110,7 @@ const Welcome = ({ navigation }) => {
           </View>
         </View>
         <Image source={require('../../../assets/pielogo.png')} style={styles.foot} />
+        <Boton title="Tareas" bkcolor={Colors.primary} color={Colors.white} onPress={onPresstaks} />
       </View>
     </KeyboardAvoidingView>
   );

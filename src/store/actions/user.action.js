@@ -1,6 +1,5 @@
 import { URL_AUTH_SIGN_IN, URL_AUTH_SIGN_UP } from '../../constants/firebase';
 
-import { enableNetworkProviderAsync } from 'expo-location';
 import { userTypes } from '../types';
 
 const { SIGN_UP, SIGN_IN } = userTypes;
@@ -34,7 +33,6 @@ export const signUp = (email, password) => {
     }
   }
 };
-
 export const signIn = (email, password) => {
   return async (dispatch) => {
     try {
@@ -49,20 +47,20 @@ export const signIn = (email, password) => {
           returnSecureToken: true,
         }),
       });
+
+      const data = await response.json();
+      console.log(response)
       if (!response.ok) {
         const errorResData = await response.json();
         console.log(errorResData);
-      }
-
-      const resData = await response.json();
-      console.log (response);
+      };
       dispatch({
         type: SIGN_IN,
-        token: resData.idToken,
-        userID: resData.localId,
+        token: data.idToken,
+        userId: data.localId,
       });
-    } catch (err) {
-      console.log(err);
+    } catch (error) {
+      console.log(error)
     }
-  }
+  };
 };

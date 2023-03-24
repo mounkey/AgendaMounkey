@@ -1,5 +1,6 @@
 import { ADireccion, AFoto, APersona } from '../../screens/index';
 
+import AddAdress from '../../screens/AddAdress';
 import React from 'react';
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
