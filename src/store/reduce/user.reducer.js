@@ -4,7 +4,7 @@ const { SIGN_UP, SIGN_IN}  = userTypes;
 
 const initialState = {
   token: null,
-  userId: null,
+  userID: null,
 };
 
 export const userReducer = (state = initialState, action) => {
@@ -13,13 +13,13 @@ export const userReducer = (state = initialState, action) => {
       return {
         ...state,
         token: action.token,
-        userId: action.userId,
+        userID: action.userID,
       };
     case SIGN_IN:
       return {
         ...state,
         token: action.token,
-        userId: action.userId,
+        userID: action.userID,
       };
     default:
       return state;

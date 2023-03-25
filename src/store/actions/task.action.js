@@ -17,7 +17,7 @@ export const getTasks = (id) => {
       const filterTask = test.filter(item=> item.id === id)
       dispatch({
         type: GET_TASKS,
-        tasks: data,
+        tasks: filterTask,
       });
     }
     catch(error){
@@ -39,7 +39,7 @@ export const getTaskAll = () => {
       const test = Object.keys(data).map(key => data[key]);
       dispatch({
         type: GET_TASK_ALL,
-        tasks: data,
+        tasks: test,
       });
 
     }

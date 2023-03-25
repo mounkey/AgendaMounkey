@@ -4,7 +4,7 @@ import TabsNavigator from './tabs';
 import { useSelector } from 'react-redux';
 
 const AppNavigator = () => {
-  const userId = useSelector((state) => state.user);
+  const userId = useSelector((state) => state.user.userID);
   return (
     <NavigationContainer>
       {userId ? <TabsNavigator /> : <AuthNavigator />}

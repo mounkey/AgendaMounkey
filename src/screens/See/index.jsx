@@ -1,4 +1,4 @@
-import { FlatList, StyleSheet, Text, View } from "react-native";
+import { FlatList, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import {HLogo, PostHeaderPlus} from '../../components/index';
 import React, { useEffect } from 'react';
 import { getTaskAll, getTasks } from '../../store/actions';
@@ -23,10 +23,10 @@ const See = ({ navigation }) => {
   const renderItem = ({ item }) => (
     <View style={styles.render}>
       <Text style={styles.fontRender}>Nombre: {item.name}</Text>
-      <Text style={styles.fontRender}>Motivo: {/*item.reason*/}</Text>
-      <Text style={styles.fontRender}>Detalle: {/*item.detail*/}</Text>
-      <Text style={styles.fontRender}>Fecha: {/*item.date*/}</Text>
-      <Text style={styles.fontRender}>Hora: {/*item.status*/}</Text>
+      <Text style={styles.fontRender}>Motivo: {item.reason}</Text>
+      <Text style={styles.fontRender}>Detalle: {item.detail}</Text>
+      <Text style={styles.fontRender}>Fecha: {item.date}</Text>
+      <Text style={styles.fontRender}>Hora: {item.status}</Text>
       <TouchableOpacity onPress={() => onPressDetails(item)}>
         <Text style={styles.fontRender}>Detalles</Text>
       </TouchableOpacity>
