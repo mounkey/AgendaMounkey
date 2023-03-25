@@ -1,6 +1,6 @@
 import * as Location from "expo-location";
 
-import { Boton, MapPreview, PhotoButton, PostHeader, TextBox } from "../../components";
+import { Boton, PhotoButton, PostHeader, TextBox } from "../../components";
 import { Image, SafeAreaView, StyleSheet, Text, View } from "react-native";
 import React, { useState } from "react";
 
@@ -112,9 +112,7 @@ const AddAdress = ( {navigation}) => {
             <Boton title="Reset" bkcolor={Color.primary} color={Color.white} onPress={onPressReset} />
           </View>
           <View style = {style.map}>
-            <MapPreview location={coords} style={style.mapReal} >
-              <Text>Hola</Text>
-            </MapPreview>
+
           </View>
         </View>
         <Text style={style.textAdress}>Direccion: {address}</Text>

@@ -17,7 +17,7 @@ export const signUp = (email, password) => {
           password,
           returnSecureToken: true,
         }),
-      });
+      });ii
       if (!response.ok) {
         const errorResData = await response.json();
         console.log(errorResData);
@@ -33,6 +33,7 @@ export const signUp = (email, password) => {
     }
   }
 };
+
 export const signIn = (email, password) => {
   return async (dispatch) => {
     try {
@@ -47,20 +48,20 @@ export const signIn = (email, password) => {
           returnSecureToken: true,
         }),
       });
-
-      const data = await response.json();
-      console.log(response)
       if (!response.ok) {
         const errorResData = await response.json();
         console.log(errorResData);
-      };
+        console.log (errorResData.error.message);
+      }
+
+      const resData = await response.json();
       dispatch({
         type: SIGN_IN,
-        token: data.idToken,
-        userId: data.localId,
+        token: resData.idToken,
+        userID: resData.localId,
       });
-    } catch (error) {
-      console.log(error)
+    } catch (err) {
+      console.log(err);
     }
-  };
+  }
 };

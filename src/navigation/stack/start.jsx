@@ -7,8 +7,7 @@ const Stack = createNativeStackNavigator();
 
 const StartNavigator = () => {
   return(
-    <Stack.Navigator initialRouteName = 'Inicio'>
-      <Stack.Screen name='Inicio'  component={Inicio} option={{ title:'Bienvenido'}}/>
+    <Stack.Navigator initialRouteName = 'mostrar'>
       <Stack.Screen name ='Mostrar' component={Mostrar} option={{title: 'Actividades'}}/>
     </Stack.Navigator>
   )
