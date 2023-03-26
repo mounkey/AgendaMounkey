@@ -1,12 +1,12 @@
 import * as Location from "expo-location";
 
-import { Boton, PhotoButton, PostHeader, TextBox } from "../../components";
+import { Boton, MapPreview, PhotoButton, PostHeader, TextBox } from "../../components";
 import { Image, SafeAreaView, StyleSheet, Text, View } from "react-native";
 import React, { useState } from "react";
 
 import Color from "../../constants/color";
 
-const AddAdress = ( {navigation}) => {
+const AddAdress = ({ navigation }) => {
   //useState
   const [address, setAddress] = useState("");
   const [city, setCity] = useState("");
@@ -42,23 +42,21 @@ const AddAdress = ( {navigation}) => {
   };
 
   //onPressObtener
-  const onPressObtener = async() => {
+  const onPressObtener = async () => {
     const largeAddress = address + " " + city + " " + country;
     const geocodedLocation = await Location.geocodeAsync(largeAddress);
-    const{latitude, longitude} = geocodedLocation[0];
-    setCoords({lat:latitude, lgn: longitude}) ;
+    const { latitude, longitude } = geocodedLocation;
+    setCoords({ lat: latitude, lgn: longitude });
     onChangeCoords(coords);
-    };
+  };
 
   //onChangeCoords
   const onChangeCoords = (coord) => {
-    if (coord.lat == "" && coord.lgn == "")
-    {
+    if (coord.lat == "" && coord.lgn == "") {
       console.log("No hay coordenadas");
     }
-    else
-    {
-      const {lat, lgn} = coord;
+    else {
+      const { lat, lgn } = coord;
       setWCoords("Coordenadas: Latitud: " + lat + " Longitud: " + lgn);
     }
 
@@ -69,7 +67,7 @@ const AddAdress = ( {navigation}) => {
     setAddress("");
     setCity("");
     setCountry("");
-    setCoords({lat: "", lgn: ""});
+    setCoords({ lat: "", lgn: "" });
     setWCoords("");
   };
 
@@ -78,7 +76,7 @@ const AddAdress = ( {navigation}) => {
 
   return (
     <SafeAreaView style={style.container}>
-      <PhotoButton onPress= {onPressCamera} img= {PhotoHead}></PhotoButton>
+      <PhotoButton onPress={onPressCamera} img={PhotoHead}></PhotoButton>
       <PostHeader section="Per" />
       <View style={style.containerTextInput}>
         <Text style={style.font}>Agregar Direccion</Text>
@@ -106,13 +104,15 @@ const AddAdress = ( {navigation}) => {
           multiline={false}
           numLine={1}
         />
-        <View style = {style.containerMap}>
-          <View style = {style.buttonMap}>
+        <View style={style.containerMap}>
+          <View style={style.buttonMap}>
             <Boton title="Obtener" bkcolor={Color.primary} color={Color.white} onPress={onPressObtener} />
             <Boton title="Reset" bkcolor={Color.primary} color={Color.white} onPress={onPressReset} />
           </View>
-          <View style = {style.map}>
-
+          <View style={style.map}>
+            <MapPreview location={coords} style={style.mapReal} >
+              <Text>Hola</Text>
+            </MapPreview>
           </View>
         </View>
         <Text style={style.textAdress}>Direccion: {address}</Text>
@@ -166,13 +166,13 @@ const style = StyleSheet.create({
     marginTop: 10,
   },
 
-  mapReal:{
-    flex:1,
+  mapReal: {
+    flex: 1,
     width: '100%',
     height: '100%',
   },
 
-  textAdress:{
+  textAdress: {
     fontFamily: 'Montserrat-Regular',
     fontSize: 15,
     color: Color.white,

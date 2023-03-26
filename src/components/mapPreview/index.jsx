@@ -1,18 +1,17 @@
-import {Image, View} from 'react-native';
+import { Image, View } from "react-native";
 
-import  MapView from 'react-native-maps';
-import {URL_MAPS} from '../../utils/maps';
-import {styles} from './style';
-import {useState} from'react';
+import React from "react";
+import { URL_MAPS } from "../../utils/maps";
+import { styles } from "./style";
 
-export default function MapPreview ({ location, style }) {
-  const { lat, lgn } = location || {};
-
-  // Estados
-  const [map, setMap] = useState({latitude: lat, longtitude: lgn, longtitudeDelta: 0.0922, longitudeDelta: 0.8421,});
+const MapPreview = ({ children, location, style }) => {
+  const { lat, lng } = location || {};
+  const mapPreviewUrl = location ? URL_MAPS(lat, lng) : "";
   return (
-    <View style={{...styles.container, ...style}}>
-      { location ? <MapView style={styles.mapImage} region={map} />: console.log('No hay napa') }
+    <View style={{ ...styles.container, ...style }}>
+      {location ? <Image style={styles. mapImage} source={{ uri: mapPreviewUrl }} /> : children}
     </View>
   );
 };
+
+export default MapPreview;

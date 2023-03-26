@@ -36,7 +36,7 @@ const See = ({ navigation }) => {
   //onPressDetails
   const onPressDetails = (item) => {
     dispatch(getTasks(item));
-    navigation.navigate('Detalle');
+    navigation.navigate('Detalles');
   };
 
   //onPressNew

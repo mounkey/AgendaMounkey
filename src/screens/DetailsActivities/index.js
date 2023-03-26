@@ -4,8 +4,13 @@ import { Image, SafeAreaView, StyleSheet, Text, View } from "react-native";
 import Color from "../../constants/color";
 import React from "react";
 import { StatusBar } from "expo-status-bar";
+import { useSelector } from 'react-redux';
 
-export default function DetailsActivities({ route, navigation }) {
+export default function DetailsActivities({  navigation }) {
+
+  const Task = useSelector((state) => state.task.selected);
+console.log(Task)
+
 
   return (
     <SafeAreaView style={styles.container}>
@@ -22,6 +27,7 @@ const styles = StyleSheet.create({
     backgroundColor: Color.white,
     alignItems: "center",
     justifyContent: "center",
+    flex: 1,
   },
 
   containerInPut: {
@@ -32,7 +38,6 @@ const styles = StyleSheet.create({
   },
 
   containerInPut2: {
-    flex: 1,
     backgroundColor: Color.white,
     alignItems: "center",
     justifyContent: "center",

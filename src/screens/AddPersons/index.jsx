@@ -70,7 +70,7 @@ const AddPersons = ( {navigation} ) => {
     }
     else{
       dispatch(addPerson(name, mailp, mails, phone, phones, face, insta, link ));
-      //navigation.navigate('ADireccion');
+      navigation.navigate('ADireccion');
     }
 
 

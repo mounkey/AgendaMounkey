@@ -22,33 +22,13 @@ const tasksReducer = (state = initialState, action) => {
       if (indexTasks === -1) return state;
       return{
         ...state,
-        selected: action.tasks
+        selected: action.tasks(indexTasks)
     }
 
     case ADD_TASK:
       return{
         selected: [...state.selected, {name: action.name, date: action.date, details: action.details, description: action.description, status: action.status}]
       }
-
-    case REMOVE_TASK:
-      return{
-        ...state,
-        tasks: state.tasks.filter(task => task.id !== action.id)
-      };
-
-    case  CHANGE_STATUS:
-      return{
-        ...state,
-        tasks: state.tasks.map(task => {
-          if(task.id === action.id){
-            return{
-              ...task,
-              status: action.status
-            }
-          }
-          return task;
-        })
-      };
 
     default:
       return state;

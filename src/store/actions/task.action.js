@@ -14,10 +14,11 @@ export const getTasks = (id) => {
 
       const data = await response.json();
       const test = Object.keys(data).map(key => data[key]);
-      const filterTask = test.filter(item=> item.id === id)
+      const List = test.filter(item => item.id === id);
+    console.log(List)
       dispatch({
         type: GET_TASKS,
-        tasks: filterTask,
+        selected: List,
       });
     }
     catch(error){
@@ -80,53 +81,3 @@ export const addTask = (name, date, detail, reason, status) => {
     }
   }
 };
-
-export const removeTask = (id) => {
-  return async (dispatch) => {
-    try {
-      const response = await fetch (`${REALTIME_DATABASE_URL}/tasks/${id}.json`, {
-        method: 'DELETE',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
-      const resukt = await response.json();
-      dispatch({
-        type: REMOVE_TASK,
-        payload: id,
-      });
-    }catch(error){
-      dispatch({
-        type: REMOVE_TASK,
-        error,
-      })
-    }
-  }
-};
-
-export const changeStatus = (id, status ) => {
-  return async (dispatch) => {
-    try {
-      const response = await fetch (`${REALTIME_DATABASE_URL}/tasks/${id}.json`, {
-        method: 'PATCH',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          status: status,
-        })
-      });
-      const result = await response.json();
-      dispatch({
-        type: CHANGE_STATUS,
-        payload: result,
-      });
-    }catch(error){
-      dispatch({
-        type: CHANGE_STATUS,
-        error,
-      })
-    }
-  }
-}
-
